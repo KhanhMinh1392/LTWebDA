@@ -1,0 +1,54 @@
+﻿@model Web.Models.NhanVien
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    @Styles.Render("/Areas/Admin/Content/css/style.css")
+    @Styles.Render("https://fonts.googleapis.com/css?family=Poppins:600&display=swap")
+    @Scripts.Render("https://kit.fontawesome.com/a81368914c.js")
+    <link rel="icon" href="~/Content/img/logos/logotitlewhite.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <img class="wave" src="~/Areas/Admin/Content/img/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="~/Areas/Admin/Content/img/bg.svg">
+        </div>
+        <div class="login-content">
+            @using (Html.BeginForm("Login", "LoginAdmin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "sign-in-form" }))
+            {
+                <img src="~/Areas/Admin/Content/img/avatar.svg">
+                <h2 class="title">Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        @Html.TextBoxFor(model=>model.ADUSERNAME,new {@class = "input" })
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        @Html.PasswordFor(model => model.ADPASSWORD, new { @class = "input" })
+                    </div>
+                </div>
+                <a href="#">Forgot Password?</a>
+                <input type="submit" class="btn" value="Login">
+            }
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Areas/Admin/Content/js/main.js"></script>
+</body>
+</html>

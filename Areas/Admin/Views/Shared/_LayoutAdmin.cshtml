@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <link rel="icon" href="~/Content/img/logos/logotitlewhite.png" type="image/x-icon" />
+    @Styles.Render("/Areas/Admin/Content/css/styleadmin.css")
+    @Styles.Render("/Areas/Admin/Content/icon_font/fontawesome-free-5.15.3-web/css/all.min.css")
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="checkbox" name="" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <a href="" style="cursor:pointer;"><span>LEO</span></a>
+            </h3>
+            <label for="sidebar-toggle"><i class="fas fa-bars"></i></label>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index","Admin")">
+                        <span><i class="fas fa-home"></i></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Donhang","Admin")">
+                        <span><i class="fas fa-file-invoice-dollar"></i></span>
+                        <span class="title"> Đơn Hàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Customer","Admin")">
+                        <span><i class="fas fa-user"></i></span>
+                        <span class="title">Khách Hàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Sanpham","Admin")">
+                        <span><i class="fas fa-box-open"></i></span>
+                        <span>Sản Phẩm</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="fas fa-truck"></i></span>
+                        <span>Vận Chuyển</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="fas fa-chart-area"></i></span>
+                        <span class="title">Báo Cáo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("News","New")">
+                        <span><i class="fas fa-newspaper"></i></span>
+                        <span class="title">Quản Lý New</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Staff","Admin")">
+                        <span><i class="fas fa-cog"></i></span>
+                        <span class="title">Nhân Viên</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Login","LoginAdmin")">
+                        <span><i class="fas fa-sign-out-alt"></i></span>
+                        <span class="title">Đăng Xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="search-warpper">
+                <span><i class="fas fa-search"></i></span>
+                <input type="search" name="" id="" placeholder="Search">
+            </div>
+            <div class="social-icons">
+                <span><i class="fas fa-bell fa-2x"></i></span>
+                <span><i class="fas fa-comment fa-2x"></i></span>
+                <div><a href="admin"></a></div>
+            </div>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

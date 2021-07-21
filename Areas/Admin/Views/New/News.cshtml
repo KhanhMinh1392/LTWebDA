@@ -1,0 +1,79 @@
+﻿@using Web.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<News>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    tr,th,td{
+        border-right: 1px solid black;
+    }
+</style>
+<main>
+    <h2 class="dash-title">Tin Tức Sản Phẩm</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="right">
+                    <a href="@Url.Action("Create","New")"><button><i class="fas fa-plus-circle"></i> Tạo Tin</button></a>
+                </div>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Ảnh</th>
+                            <th>Tiêu Đề</th>
+                            <th>Chi Tiết</th>
+                            <th>Ngày Đăng</th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+            <tr>
+                <td class="content"><img src="~/Content/img/img_news/@item.HINHANH" alt="" style="width:60px"></td>
+                <td>@item.TIEUDE</td>
+                <td class="">@item.CHITIET</td>
+                <td class="content">@item.NGAYDANG</td>
+                <td class="content">
+                    <a href="@Url.Action("Edit","New",new {id = item.NEWS_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
+                    <a href="@Url.Action("Delete","New",new {id = item.NEWS_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                </td>
+            </tr>}
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Sanpham", "Admin", new { page = page, @class = "pagenum" }))
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

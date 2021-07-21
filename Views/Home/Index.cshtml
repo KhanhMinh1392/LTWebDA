@@ -1,0 +1,130 @@
+﻿@model Web.Models.Sanpham
+@{
+  ViewBag.Title = "Home White";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section padding_layout_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="main_heading text_align_center">
+                        <h2>Best Seller</h2>
+                        <p class="large">Chúng tôi đóng gói các sản phẩm với dịch vụ tốt nhất để làm cho bạn một khách hàng hài lòng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Listsanpham.Take(4))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img">
+                            <img class="img-responsive" src="~/Content/img/it_service/@item.HINHANH" alt="">
+                        </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <h4><a href="@Url.Action("Detail","Home",new {Id = item.PRODUCT_ID})">@item.TENSP</a></h4>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="new_price">@item.GIA VNĐ</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+             }
+        </div>
+        <p><a class="btn main_bt" href="@Url.Action("Shop","Home")" style="margin-left: 500px;">Xem Thêm</a></p>
+    </div>
+</div>
+<!-- end section -->
+<!-- section -->
+<img src="~/Content/img/it_service/section_banner_27a8c.jpg" alt="" style="width:1600px">
+<!-- end section -->
+<!-- section -->
+<div class="section padding_layout_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="main_heading text_align_center">
+                        <h2>Sản Phẩm</h2>
+                        <p class="large">Chúng tôi đóng gói các sản phẩm với dịch vụ tốt nhất để làm cho bạn một khách hàng hài lòng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Listsanpham.Take(12))
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+                    <div class="product_list">
+                        <div class="product_img"> <img class="img-responsive" src="~/Content/img/it_service/@item.HINHANH" alt=""> </div>
+                        <div class="product_detail_btm">
+                            <div class="center">
+                                <h4><a href="@Url.Action("Detail","Home",new {Id = item.PRODUCT_ID})">@item.TENSP</a></h4>
+                            </div>
+                            <div class="product_price">
+                                <p><span class="new_price">@item.GIA VNĐ</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+             }
+            <p><a class="btn main_bt" href="@Url.Action("Shop","Home")" style="margin-left: 500px;">Xem Thêm</a></p>
+        </div>
+    </div>
+    <!-- end section -->
+    <img src="~/Content/img/it_service/slide-img17a8c.jpg" alt="" style="width:1600px">
+    <!-- section -->
+    <div class="section padding_layout_1 light_silver gross_layout right_gross_layout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_right">
+                            <h2>Feedback</h2>
+                            <p class="large">Feedback của khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row counter">
+                <div class="col-md-4"> </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
+                            <div class="text_align_right"><i class="fa fa-smile-o"></i></div>
+                            <div class="text_align_right">
+                                <p class="counter-heading text_align_right">Hài Lòng Khách Hàng</p>
+                            </div>
+                            <h5 class="counter-count">2150</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
+                            <div class="text_align_right"><i class="fa fa-laptop"></i></div>
+                            <div class="text_align_right">
+                                <p class="counter-heading text_align_right">Feedback trên Laptop</p>
+                            </div>
+                            <h5 class="counter-count">1280</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
+                            <div class="text_align_right"><i class="fa fa-desktop"></i></div>
+                            <div class="text_align_right">
+                                <p class="counter-heading">Feedback trên PC</p>
+                            </div>
+                            <h5 class="counter-count">848</h5>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 margin_bottom_50">
+                            <div class="text_align_right"><i class="fa fa-mobile-phone"></i></div>
+                            <div class="text_align_right">
+                                <p class="counter-heading">Feedback Điện Thoại</p>
+                            </div>
+                            <h5 class="counter-count">450</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Donhang";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+    <h2 class="dash-title">Đơn Hàng</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="right">
+                    <a href="@Url.Action("CreateBill","Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
+                </div>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Mã ĐH</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Trạng Thái Đơn Hàng</th>
+                            <th>Thanh Toán</th>
+                            <th>Khách Phải Trả</th>
+                            <th>Ngày Tạo Đơn</th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        <tr>
+                            <td class="content"><a href="#">SON111111</a></td>
+                            <td>Đào Khánh Minh</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                            <td class="content"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="content"><a href="#">SON111111</a></td>
+                            <td>Nguyễn Đức Công Khoa</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                            <td class="content"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="content"><a href="#">SON111111</a></td>
+                            <td>Hoàng Thái Kha</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                            <td class="content"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="content"><a href="#">SON111111</a></td>
+                            <td>Trương Tín</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                            <td class="content"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="content"><a href="#">SON111111</a></td>
+                            <td>Cristian Ronaldo</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                            <td class="content"><i class="fas fa-trash-alt"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

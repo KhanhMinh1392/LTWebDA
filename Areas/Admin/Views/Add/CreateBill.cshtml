@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CreateBill";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<main>
+    <h2 class="dash-title">Thêm Đơn Hàng</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    <form action="">
+                        <div class="left">
+                            Tên Khách Hàng <br>
+                            <input type="text" name="" id="">
+                            <br>
+                            Số Điện Thoại <br>
+                            <input type="tel" name="" id="" value="0" maxlength="10">
+                            <br>
+                            Địa Chỉ<br>
+                            <input type="text" name="" id="">
+                            <br>
+                            Ngày Lập Đơn<br>
+                            <input type="text" name="" value="@DateTime.Now">
+                        </div>
+                        <div class="right">
+                            <br>
+                            Ngày Giao Hàng <br>
+                            <input type="text" name="" value="@DateTime.Now">
+                            <br>
+                            Tên Sản Phẩm <br>
+                            <input type="text" name="" id="" min="1" max="4">
+                            <br>
+                            Giá<br>
+                            <input type="text" name="" id="">
+                            <br>
+                            Trạng Thái <br>
+                            <select name="example">
+                                <option value="A">Đã Giao Dịch</option>
+                                <option value="B">Chưa Giao Dịch</option>
+                                <option value="-">Chưa Thanh Toán</option>
+                                <option value="-">Đã Thanh Toán</option>
+                            </select>
+                        </div>
+                        <div class="btn">
+                            <input type="submit" value="Lưu">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+

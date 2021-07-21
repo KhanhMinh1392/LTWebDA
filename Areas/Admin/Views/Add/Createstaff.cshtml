@@ -1,0 +1,190 @@
+﻿@model Web.Models.NhanVien
+@{
+    ViewBag.Title = "Createstaff";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .left, .right{
+        margin-bottom: 100px;
+    }
+</style>
+<main>
+    &lsaquo;<a href="@Url.Action("Staff","Admin")" class="dash-title underline">Quay về danh sách nhân viên</a>
+    <h2 class="dash-title">Tạo Nhân Viên</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    @using (Html.BeginForm("Createstaff", "Add", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                        <div class="left">
+                            Tên Nhân Viên <br>
+                            <input type="text" name="TENNV" id="" class="">
+                            <br>
+                            Số Điện Thoại <br>
+                            <input type="tel" name="SDT" id="" value="0" min="1">
+                            <br>
+                            Email<br>
+                            <input type="email" name="EMAIL" id="" class="">
+                            <br />
+                            Địa Chỉ<br>
+                            <input type="text" name="DIACHI" id="" class="">
+                            <br />
+                            Ngày Sinh<br>
+                            <input type="date" name="NGAYSINH" id="" class="">
+                        </div>
+                        <div class="right">
+                            <br>
+                            USERNAME <br>
+                            @Html.TextBoxFor(m => m.ADUSERNAME, new { @class = "" })
+                            <br>
+                            PASSWORD <br>
+                            @Html.PasswordFor(m => m.ADPASSWORD, new { @class = "" })
+                            <br>
+                        </div>
+                        <div class="btn">
+                            <input type="submit" value="SAVE">
+                        </div>}
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="loaiSize">
+        <h3>Bảng Size</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Size - ID</th>
+                    <th>Loại Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">S</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">M</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">L</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">XL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loaiSP">
+        <h3>Loại Sản Phẩm</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại - ID</th>
+                    <th>Tên Loại Sản Phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">TOPS</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">BOTTOM</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">ACCESSORIES</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">BAGS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ctsp">
+        <h3>Loại Sản Phẩm</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại - ID</th>
+                    <th>Tên Loại Sản Phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">TOPS</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">BOTTOM</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">ACCESSORIES</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">BAGS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+
+            var readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.avatar').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+            $(".file-upload").on('change', function () {
+                readURL(this);
+            });
+        });
+    </script>
+</main>
+
+

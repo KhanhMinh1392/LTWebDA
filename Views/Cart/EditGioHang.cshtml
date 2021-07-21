@@ -1,0 +1,132 @@
+﻿@using Web.Models
+@model Cart
+@{
+    ViewBag.Title = "EditGioHang";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+@{ 
+    List<Cart> lstGH = ViewBag.GioHang as List<Cart>;
+}
+
+<div id="inner_banner" class="section inner_banner_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <h1 class="page-title">Shopping Cart</h1>
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active">Shopping Cart</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end inner page banner -->
+<div class="section padding_layout_1 Shopping_cart_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="product-table">
+                    @if (Model == null)
+                    {
+                        <img src="~/Content/img/fevicon/empty_cart.png" alt="empty" style="margin-left:345px" />
+                        <h1 style="text-align:center;">Giỏ Hàng Rỗng</h1> }
+                    else
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sản Phẩm</th>
+                                    <th>Size</th>
+                                    <th>Số lượng</th>
+                                    <th class="text-center">Giá</th>
+                                    <th class="text-center">Tổng</th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in lstGH)
+                                {
+                                    if (Model.PRODUCT_ID == item.PRODUCT_ID)
+                                    {
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        using (Html.BeginForm("UpdateGH", "Cart"))
+                                        {
+                                            @Html.Hidden("PRODUCT_ID", item.PRODUCT_ID)
+                                            <tr>
+                                                <td class="col-sm-8 col-md-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="~/Content/img/it_service/@item.HINHANH" style="width:100px;" alt="#"></a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">@item.TENSP</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-1 col-md-1" style="text-align: center;">
+                                                    <br /> <br />
+                                                    <input class="form-control" value="@item.Size " type="text">
+                                                </td>
+                                                <td class="col-sm-1 col-md-1" style="text-align: center;">
+                                                    <br /> <br />
+                                                    @if (Model.sl < item.sl)
+                                                    {
+                                                        @Html.ValidationMessageFor(model => model.sl, "", new { @class = "text-danger" }) }
+                                                    else
+                                                    {
+                                                        @Html.TextBox("sl", item.sl, new { @class = "form-control" })}
+                                                    @*<input class="form-control" value="@item.sl " type="text">*@
+                                                </td>
+                                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">@item.GIA.ToString("#,##")</p></td>
+                                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">@item.ThanhTien.ToString("#,##")</p></td>
+                                                <td class="col-sm-1 col-md-1"><button type="submit" class="bt_main"><i class="fa fa-upload"></i> Remove</button></td>
+                                            </tr>
+                                            }
+                                        }
+                                    }
+                            </tbody>
+                        </table>
+                        }
+                </div>
+                @*<div class="shopping-cart-cart">
+                    <table>
+                        <tbody>
+                            <tr class="head-table">
+                                <td><h3>Tổng đơn</h3></td>
+                                <td class="text-right"></td>
+                            </tr>
+                            <tr>
+                                <td><h4>SL sản phẩm:</h4></td>
+                                <td class="text-right"><h4>@ViewBag.TongSoLuong</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Tổng tiền:</h4></td>
+                                <td class="text-right"><h4>@ViewBag.TongTien.ToString("#,##") VNĐ</h4></td>
+                            </tr>
+                            <tr>
+                                <td><a href="@Url.Action("Shop","Home")"><button type="button" class="bt_main">Tiếp Tục Mua</button></a></td>
+                                <td><a href="@Url.Action("Check","Home")"><button class="bt_main">ThanhToán </button></a></td>
+                            </tr>
+                        </tbody>
+                    </table>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("/Content/js/hizoom.js")
+<script>
+    $('.hi1').hiZoom({
+        width: 300,
+        position: 'right'
+    });
+    $('.hi2').hiZoom({
+        width: 400,
+        position: 'right'
+    });</script>
+

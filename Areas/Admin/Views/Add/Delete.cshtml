@@ -1,0 +1,191 @@
+﻿@model Web.Models.Product
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main>
+    &lsaquo; <a href="@Url.Action("Sanpham","Admin")" class="dash-title underline">Quay về danh sách sản phẩm</a>
+    <h2 class="dash-title">Xóa Sản Phẩm</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    @using (Html.BeginForm("Delete", "Add", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("PRODUCT_ID", Model.PRODUCT_ID)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="left">
+                            Tên Sản Phẩm <br>
+                            @Html.TextBoxFor(model => model.TENSP, new { htmlAttributes = new { @class = "form-control" } })
+                            <br>
+                            Số Lượng <br>
+                            @Html.TextBoxFor(model => model.SL, new { htmlAttributes = new { @class = "form-control" } })
+                            <br>
+                            Mô Tả<br>
+                            @Html.TextBoxFor(model => model.Mota, new { @class = "mota" })
+                        </div>
+                        <div class="right">
+                            <br>
+                            Size <br>
+                            @Html.TextBoxFor(model => model.Size.TENSIZE, new { @class = "" })
+                            <br>
+                            Loại Sản Phẩm <br />
+                            @Html.TextBoxFor(model => model.CategoryCon.TENLOAISP, new { @class = "" })
+                            <br>
+                            Giá<br>
+                            @Html.TextBoxFor(model => model.GIA, new { @class = "" })
+                            <br>
+                            Hình ảnh <br>
+                            <div class="text-center">
+                                <img src="@Url.Content("~/Content/img/it_service/"+Model.HINHANH)" class="avatar img-circle img-thumbnail" alt="avatar" style="width:300px">
+                                <h6>Upload PicTure</h6>
+                                <input type="file" class="text-center center-block file-upload" name="HINHANH">
+                                <span style="color:red">@ViewBag.upload</span>
+                            </div><br>
+                        </div>
+                        <div class="btn">
+                            <input type="submit" value="DELETE">
+                        </div>}
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="loaiSize">
+        <h3>Bảng Size</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Size - ID</th>
+                    <th>Loại Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">S</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">M</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">L</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">XL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="loaiSP">
+        <h3>Loại Sản Phẩm</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại - ID</th>
+                    <th>Tên Loại Sản Phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">TOPS</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">BOTTOM</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">ACCESSORIES</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">BAGS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ctsp">
+        <h3>Loại Sản Phẩm</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại - ID</th>
+                    <th>Tên Loại Sản Phẩm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="content">1</td>
+                    <td class="content">TOPS</td>
+                </tr>
+                <tr>
+                    <td class="content">2</td>
+                    <td class="content">BOTTOM</td>
+                </tr>
+                <tr>
+                    <td class="content">3</td>
+                    <td class="content">ACCESSORIES</td>
+                </tr>
+                <tr>
+                    <td class="content">4</td>
+                    <td class="content">BAGS</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+
+            var readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.avatar').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+            $(".file-upload").on('change', function () {
+                readURL(this);
+            });
+        });
+    </script>
+</main>
+
+

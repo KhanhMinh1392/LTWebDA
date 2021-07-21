@@ -1,0 +1,205 @@
+﻿@model Web.Models.Sanpham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div id="inner_banner" class="section inner_banner_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <h1 class="page-title">Shop Detail</h1>
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active">Shop Detail</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section padding_layout_1 product_detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="product_detail_feature_img hizoom hi2">
+                            <div class='hizoom hi2'> <img src="~/Content/img/it_service/@Model.dbsanpham.HINHANH" alt="" style="width:430px" /> </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
+                        <div class="product-heading">
+                            <h2>@Model.dbsanpham.TENSP</h2>
+                        </div>
+                        <div class="product-detail-side"><span class="new-price">@Model.dbsanpham.GIA VNĐ</span> </div>
+                        <div class="btn-size">
+                            <button>Size S</button>
+                            <button>Size M</button>
+                            <button>Size L</button>
+                            <button>Size XL</button>
+                        </div>
+                        <div class="detail-contant">
+                            <p>
+                                Chi tiết sản phẩm: <br>
+                                • 100% nỉ bông.<br>
+                                • 2 túi thân áo.<br>
+                                • Hoạ tiết logo DIRTYCOINS áp dụng công nghệ in chuyển nhiệt.<br>
+                                • Thêu tay thủ công logo Y viền bông.<br>
+                                • Bo gân viền áo, tà áo và cổ tay áo.<br>
+                                • Hàng khuy dễ đóng mở.<br>
+                                <span class="stock">2 in stock</span>
+                            </p>
+                            <form class="cart" method="post" action="">
+                                <div class="quantity">
+                                    <input step="1" min="1" max="5" name="sl" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+                                </div>
+                                <a href="@Url.Action("ThemGioHang","Cart",new { @id=Model.dbsanpham.PRODUCT_ID,@strURL= Request.Url.ToString()})" class="btn sqaure_bt" style="margin-top:-3px; margin-left:10px;">
+                                    Add to cart
+                                </a>
+                            </form>
+                        </div>
+                        <div class="share-post">
+                            <a href="#" class="share-text">Share</a>
+                            <ul class="social_icons">
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <div class="tab_bar_section">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#description">Description</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews">Reviews (2)</a> </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div id="description" class="tab-pane active">
+                                        <div class="product_desc">
+                                            <p>
+                                                Chi tiết sản phẩm: <br>
+                                                • 100% nỉ bông.<br>
+                                                • 2 túi thân áo.<br>
+                                                • Hoạ tiết logo DIRTYCOINS áp dụng công nghệ in chuyển nhiệt.<br>
+                                                • Thêu tay thủ công logo Y viền bông.<br>
+                                                • Bo gân viền áo, tà áo và cổ tay áo.<br>
+                                                • Hàng khuy dễ đóng mở.<br>
+                                                <span class="stock">2 in stock</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div id="reviews" class="tab-pane fade">
+                                        <div class="product_review">
+                                            <h3>Reviews (2)</h3>
+                                            <div class="commant-text row">
+                                                <div class="col-lg-2 col-md-2 col-sm-4">
+                                                    <div class="profile"> <img class="img-responsive" src="~/Content/img/it_service/profile2.png" alt="#"> </div>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-8">
+                                                    <h5>Khoa Nguyễn</h5>
+                                                    <p><span class="c_date">March 2, 2018</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
+                                                    <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                                    <p class="msg">
+                                                        Sản Phẩm Quá Đẹp, mặc vừa người, thoải mái
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="commant-text row">
+                                                <div class="col-lg-2 col-md-2 col-sm-4">
+                                                    <div class="profile"> <img class="img-responsive" src="~/Content/img/it_service/customer1.jpg" alt="#"> </div>
+                                                </div>
+                                                <div class="col-lg-10 col-md-10 col-sm-8">
+                                                    <h5>Văn Sến</h5>
+                                                    <p><span class="c_date">March 2, 2018</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
+                                                    <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
+                                                    <p class="msg">Sản Phẩm Quá Đẹp, mặc vừa người, thoải mái</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="full review_bt_section">
+                                                        <div class="float-right"> <a class="btn sqaure_bt" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Leave a Review</a> </div>
+                                                    </div>
+                                                    <div class="full">
+                                                        <div id="collapseExample" class="full collapse commant_box">
+                                                            <form accept-charset="UTF-8" action="index.html" method="post">
+                                                                <input id="ratings-hidden" name="rating" type="hidden">
+                                                                <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." required=""></textarea>
+                                                                <div class="full_bt center">
+                                                                    <button class="btn sqaure_bt" type="submit">Save</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="full">
+                            <div class="main_heading text_align_left" style="margin-bottom: 35px;">
+                                <h3>Related products</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.Listsanpham.Take(3))
+                    {
+                        <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
+                            <div class="product_list">
+                                <div class="product_img"> <img class="img-responsive" src="~/Content/img/it_service/@item.HINHANH" alt=""> </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <h4><a href="@Url.Action("Detail","Home",new {Id = item.PRODUCT_ID})">@item.TENSP</a></h4>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p><span class="new_price">@item.GIA</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="side_bar">
+                    <div class="side_bar_blog">
+                        <h4>SEARCH</h4>
+                        <div class="side_bar_search">
+                            <div class="input-group stylish-input-group">
+                                <input class="form-control" placeholder="Search" type="text">
+                                <span class="input-group-addon">
+                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

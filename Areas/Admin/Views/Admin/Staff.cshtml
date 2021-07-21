@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Web.Models.NhanVien>
+@{
+    ViewBag.Title = "Staff";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<main>
+    <h2>Staff</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="right">
+                    <a href="@Url.Action("Createstaff","Add")"><button><i class="fas fa-plus-circle"></i> Tạo Nhân Viên</button></a>
+                </div>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Mã nhân viên</th>
+                            <th>Tên nhân viên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Username</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <a href="">
+                                    <td class="content">@item.NHANVIEN_ID</td>
+                                    <td>@item.TENNV</td>
+                                    <td class="content">@item.EMAIL</td>
+                                    <td class="content">@item.SDT</td>
+                                    <td class="content">@item.ADUSERNAME</td>
+                                    <td class="content"><a href="@Url.Action("Delete", "Staff" )"><i class="fas fa-trash-alt"></i></a></td>
+                                </a>
+                            </tr>}
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+

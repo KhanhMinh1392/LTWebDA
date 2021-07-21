@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<main>
+    <h2 class="dash-title">Tổng Quan</h2>
+    <div class="dash-cards">
+        <div class="card-single">
+            <div class="card-body">
+                <span><i class="fas fa-briefcase"></i></span>
+                <div>
+                    <h5>Tổng Đơn Hàng</h5>
+                    <h4>30.000</h4>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="">View all</a>
+            </div>
+        </div>
+        <div class="card-single">
+            <div class="card-body">
+                <span><i class="fas fa-sync-alt"></i></span>
+                <div>
+                    <h5>Tổng Doanh Thu</h5>
+                    <h4>1.000.000.000VNĐ</h4>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="">View all</a>
+            </div>
+        </div>
+        <div class="card-single">
+            <div class="card-body">
+                <span><i class="fas fa-shopping-cart"></i></span>
+                <div>
+                    <h5>Tổng Sản Phẩm</h5>
+                    <h4>75.300</h4>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="">View all</a>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="topic">
+                    <h3>Đơn Hàng</h3>
+                    <div class="right">
+                        <a href="donhang.html"><button><i class="fas fa-plus-circle"></i> Xem Thêm</button></a>
+                    </div>
+                </div>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Mã ĐH</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Trạng Thái Đơn Hàng</th>
+                            <th>Thanh Toán</th>
+                            <th>Khách Phải Trả</th>
+                            <th>Ngày Tạo Đơn</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        <tr>
+                            <td class="content">SON111111</td>
+                            <td>Đào Khánh Minh</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                        </tr>
+                        <tr>
+                            <td class="content">SON111111</td>
+                            <td>Nguyễn Đức Công Khoa</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                        </tr>
+                        <tr>
+                            <td class="content">SON111111</td>
+                            <td>Hoàng Thái Kha</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                        </tr>
+                        <tr>
+                            <td class="content">SON111111</td>
+                            <td>Trương Tín</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                        </tr>
+                        <tr>
+                            <td class="content">SON111111</td>
+                            <td>Cristian Ronaldo</td>
+                            <td class="content">Đã Thanh Toán</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">390.000VNĐ</td>
+                            <td class="content">27/06/2021</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

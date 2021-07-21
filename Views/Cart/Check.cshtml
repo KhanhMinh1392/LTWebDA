@@ -1,0 +1,209 @@
+﻿@using Web.Models
+@model List<Cart>
+@{ ViewBag.Title = "Check";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml"; }
+
+<style>
+    .sinput {
+        float: right;
+        width: 220px;
+    }
+
+    .category {
+        width: 400px;
+    }
+</style>
+
+<div id="inner_banner" class="section inner_banner_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <h1 class="page-title">Checkout</h1>
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active">Checkout</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end inner page banner -->
+<div class="section padding_layout_1 checkout_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="full">
+                    <div class="tab-info login-section">
+                        <p>Đăng nhập khách hàng? <a href="#login" class="" data-toggle="collapse">Nhấn vào</a></p>
+                    </div>
+                    <div id="login" class="collapse">
+                        <div class="login-form-checkout">
+                            <p>Nếu bạn đã mua sắm với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào ô bên dưới. Nếu bạn là khách hàng mới, vui lòng chuyển sang phần Thanh toán &amp; Giao hàng</p>
+                            @using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                            {
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label for="username">Username <span class="required">*</span></label>
+                            <input class="input-text" name="username" id="username" required="" type="text">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input class="input-text" name="password" id="password" required="" type="password">
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 btn-login">
+                            <button class="bt_main">Login</button>
+                            <span class="remeber">
+                                <input type="checkbox">
+                                Remember me
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>}
+                        </div>
+                    </div>
+                    <div class="tab-info coupon-section">
+                        <p>Mã giảm giá? <a href="#cupon" class="" data-toggle="collapse">Bấm vào đây để nhập mã của bạn</a></p>
+                    </div>
+                    <div id="cupon" class="collapse">
+                        <div class="coupen-form">
+                            <form action="#">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input class="input-text" name="coupon" placeholder="Coupon code" id="coupon" required="" type="text">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <button class="bt_main">Login</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("DatHang", "Order"))
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="checkout-form">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <label>Họ Và Tên: <span class="red">*</span></label>
+                                        <input class="sinput" name="TENKH" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <label>Email address <span class="red">*</span></label>
+                                        <input class="sinput" name="EMAIL" type="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <label>Số điện thoại <span class="red">*</span></label>
+                                        <input class="sinput" name="SDT" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <label>Địa Chỉ <span class="red">*</span></label>
+                                        <textarea class="sinput" name="DIACHI"></textarea>
+                                    </div>
+                                </div>
+                                @*<div class="col-md-6">
+                                        <div class="form-field">
+                                            <label>Ghi Chú <span class="red">*</span></label>
+                                            <textarea class="sinput" name="GHICHU"></textarea>
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-6">
+                                    <div class="form-field">
+                                        <label>Vận Chuyển <span class="red">*</span></label>
+                                        <input class="sinput" name="" type="text" value="Vui lòng nhập thông tin giao hang" readonly style="background:#0094ff;height:50px;color:white">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-field">
+                                        <input name="ck" type="checkbox">
+                                        <span class="crte-ac"><a href="">Create an account?</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>Đơn Hàng(@ViewBag.TongSoLuong sản phẩm)</h3>
+                    @if (Model == null)
+                    {
+                        <img src="~/Content/img/fevicon/empty_cart.png" alt="empty" style="margin-left:100px; width:200px;" /> }
+                    else
+                    {
+                        <table class="category">
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="col-sm-8 col-md-6">
+                                            <div class="media">
+                                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="~/Content/img/it_service/@item.HINHANH" style="width:70px; margin-top:20px;" alt="#"></a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="#" style="font-size:12px;">@item.TENSP</a></h4>
+                                                    <span class="quality" style="font-size:12px;">Size: </span><span class="text-success" style="font-size:12px;">@item.Size / <span class="quality" style="font-size:12px;">SL: </span><span class="text-success" style="font-size:12px;">@item.sl</span></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="col-sm-1 col-md-1 text-center"><p class="price_table">@item.ThanhTien.ToString("#,##")</p></td>
+                                    </tr>
+                                 }
+                            </tbody>
+                        </table>
+                    }
+                    <div class="shopping-cart-cart">
+                        <table>
+                            <tbody>
+                                <tr class="head-table">
+                                    <td><h3>Tổng đơn</h3></td>
+                                    <td class="text-right"></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Tạm tính:</h4></td>
+                                    <td class="text-right"><h4>@ViewBag.TongTien.ToString("#,##") VNĐ</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Phí vận chuyển</h4></td>
+                                    <td class="text-right"><h4></h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Tổng tiền:</h4></td>
+                                    <td class="text-right"><h4>@ViewBag.TongTien.ToString("#,##") VNĐ</h4></td>
+
+                                </tr>
+                                <tr>
+                                    <td><a href="@Url.Action("Cart","Cart")"><button type="button" class="bt_main">Giỏ Hàng</button></a></td>
+                                    <td>
+                                        <button class="bt_main dhang" type="submit">Đặt Hàng </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+         }
+    </div>
+</div>
+
+
+

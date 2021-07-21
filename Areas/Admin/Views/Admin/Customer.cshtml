@@ -1,0 +1,79 @@
+﻿@using Web.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<KhachHang>
+@{ 
+   ViewBag.Title = "Customer";
+   Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<main>
+    <h2 class="dash-title">Khách Hàng</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="right">
+                    <a href="@Url.Action("NewCus","AddCustomer")"><button><i class="fas fa-plus-circle"></i> Tạo Khách Hàng</button></a>
+                </div>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Mã khách hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Username</th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <a href="">
+                                    <td class="content">@item.KHACHHANG_ID</td>
+                                    <td>@item.TENKH</td>
+                                    <td class="content">@item.EMAIL</td>
+                                    <td class="content">@item.SDT</td>
+                                    <td class="content">@item.USERNAME</td>
+                                    <td class="content">
+                                            <a href="@Url.Action("Delete","AddCustomer",new {id=item.KHACHHANG_ID})"><i class="fas fa-trash-alt" style="color: black"></i>    
+                                            </a>
+                                    </td>
+                                </a>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="pagination" style="cursor:pointer;">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Customer", "Admin", new { page = page, @class = "pagenum" }))
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

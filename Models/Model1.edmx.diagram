@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da35a5ae0030438387df5d0d81b4e0ef" Name="Diagram1">
+        <EntityTypeShape EntityType="QLWebBanHangModel.About" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.CategoryCha" Width="1.5" PointX="1.5" PointY="1" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.CategoryCon" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.ChiTietDonDatHang" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.Contact" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.DonDatHang" Width="1.5" PointX="6" PointY="8.375" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.GioHang" Width="1.5" PointX="11.25" PointY="4.625" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.KhachHang" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.News" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.NhanVien" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.Product" Width="1.5" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.Restock" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.Size" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="QLWebBanHangModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__CategoryC__CATEG__3A81B327" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__Product__CATEGOR__3F466844" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__ChiTietDo__PRODU__5629CD9C" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__DonDatHan__KHACH__534D60F1" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__GioHang__PRODUCT__47DBAE45" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__GioHang__RESTOCK__48CFD27E" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__Product__SIZE_ID__403A8C7D" />
+        <AssociationConnector Association="QLWebBanHangModel.FK__Restocks__SIZE_I__440B1D61" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,75 @@
+﻿@model Web.Models.KhachHang
+@{
+    ViewBag.Title = "NewCus";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    input{
+        margin-bottom: 20px;
+    }
+</style>
+<main>
+    &lsaquo; <a href="@Url.Action("Customer","Admin")" class="dash-title underline">Quay về danh sách khách hàng</a>
+    <h2 class="dash-title">Tạo Khách Hàng</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    @using (Html.BeginForm("NewCus", "AddCustomer", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                        <div class="left">
+                            Tên Khách Hàng <br>
+                            <input type="text" name="TENKH" id="">
+                            <br>
+                            Số Điện Thoại <br>
+                            <input type="tel" name="SDT" id="" value="0" min="1">
+                            <br>
+                            Email<br>
+                            <input type="text" name="EMAIL" id="" class="">
+                        </div>
+                        <div class="right">
+                            <br>
+                            USERNAME <br>
+                            @Html.TextBoxFor(model => model.USERNAME, new { @class = "" })
+                            <br>
+                            PASSWORD <br>
+                            @Html.PasswordFor(model => model.UPASSWORD, new { @class = "" })
+                            <br>
+                        </div>
+                    <div class="btn">
+                        <input type="submit" value="Lưu">
+                    </div>}
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+

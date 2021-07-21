@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLWebBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="ABOUT_ID" />
+          </Key>
+          <Property Name="ABOUT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar(max)" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CategoryCha">
+          <Key>
+            <PropertyRef Name="CATEGORYCHA_ID" />
+          </Key>
+          <Property Name="CATEGORYCHA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENLOAISP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CategoryCon">
+          <Key>
+            <PropertyRef Name="CATEGORYCON_ID" />
+          </Key>
+          <Property Name="CATEGORYCON_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORYCHA_ID" Type="int" />
+          <Property Name="TENLOAISP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChiTietDonDatHang">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="DONDATHANG_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="DONDATHANG_ID" Type="int" Nullable="false" />
+          <Property Name="TENSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="GIA" Type="float" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="CONTACT_ID" />
+          </Key>
+          <Property Name="CONTACT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HOTENNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonDatHang">
+          <Key>
+            <PropertyRef Name="DONDATHANG_ID" />
+          </Key>
+          <Property Name="DONDATHANG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KHACHHANG_ID" Type="int" />
+          <Property Name="DATHANHTOAN" Type="bit" />
+          <Property Name="DAHUY" Type="bit" Nullable="false" />
+          <Property Name="DAXOA" Type="bit" Nullable="false" />
+          <Property Name="NGAYLAPDON" Type="datetime" />
+          <Property Name="NGAYGIAOHANG" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="CART_ID" />
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="RESTOCKS_ID" />
+          </Key>
+          <Property Name="CART_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="int" Nullable="false" />
+          <Property Name="RESTOCKS_ID" Type="int" Nullable="false" />
+          <Property Name="SLSP" Type="int" />
+          <Property Name="TONGTIEN" Type="float" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="KHACHHANG_ID" />
+          </Key>
+          <Property Name="KHACHHANG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="int" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="UPASSWORD" Type="varchar" MaxLength="50" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NEWS_ID" />
+          </Key>
+          <Property Name="NEWS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CHITIET" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NGAYDANG" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="NHANVIEN_ID" />
+          </Key>
+          <Property Name="NHANVIEN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDT" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="ADUSERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="ADPASSWORD" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORYCON_ID" Type="int" />
+          <Property Name="SIZE_ID" Type="int" />
+          <Property Name="TENSP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mota" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SL" Type="int" Nullable="false" />
+          <Property Name="GIA" Type="float" />
+        </EntityType>
+        <EntityType Name="Restocks">
+          <Key>
+            <PropertyRef Name="RESTOCKS_ID" />
+          </Key>
+          <Property Name="RESTOCKS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIZE_ID" Type="int" />
+          <Property Name="TENSP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mota" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SL" Type="int" Nullable="false" />
+          <Property Name="GIA" Type="float" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="SIZE_ID" />
+          </Key>
+          <Property Name="SIZE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TENSIZE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__CategoryC__CATEG__3A81B327">
+          <End Role="CategoryCha" Type="Self.CategoryCha" Multiplicity="0..1" />
+          <End Role="CategoryCon" Type="Self.CategoryCon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryCha">
+              <PropertyRef Name="CATEGORYCHA_ID" />
+            </Principal>
+            <Dependent Role="CategoryCon">
+              <PropertyRef Name="CATEGORYCHA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__DONDA__571DF1D5">
+          <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="1" />
+          <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonDatHang">
+              <PropertyRef Name="DONDATHANG_ID" />
+            </Principal>
+            <Dependent Role="ChiTietDonDatHang">
+              <PropertyRef Name="DONDATHANG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__PRODU__5629CD9C">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ChiTietDonDatHang">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonDatHan__KHACH__534D60F1">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="KHACHHANG_ID" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="KHACHHANG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__PRODUCT__47DBAE45">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__RESTOCK__48CFD27E">
+          <End Role="Restocks" Type="Self.Restocks" Multiplicity="1" />
+          <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restocks">
+              <PropertyRef Name="RESTOCKS_ID" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="RESTOCKS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CATEGOR__3F466844">
+          <End Role="CategoryCon" Type="Self.CategoryCon" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryCon">
+              <PropertyRef Name="CATEGORYCON_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CATEGORYCON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__SIZE_ID__403A8C7D">
+          <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restocks__SIZE_I__440B1D61">
+          <End Role="Size" Type="Self.Size" Multiplicity="0..1" />
+          <End Role="Restocks" Type="Self.Restocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="Restocks">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLWebBanHangModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryCha" EntityType="Self.CategoryCha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryCon" EntityType="Self.CategoryCon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietDonDatHang" EntityType="Self.ChiTietDonDatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonDatHang" EntityType="Self.DonDatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restocks" EntityType="Self.Restocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CategoryC__CATEG__3A81B327" Association="Self.FK__CategoryC__CATEG__3A81B327">
+            <End Role="CategoryCha" EntitySet="CategoryCha" />
+            <End Role="CategoryCon" EntitySet="CategoryCon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__DONDA__571DF1D5" Association="Self.FK__ChiTietDo__DONDA__571DF1D5">
+            <End Role="DonDatHang" EntitySet="DonDatHang" />
+            <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__PRODU__5629CD9C" Association="Self.FK__ChiTietDo__PRODU__5629CD9C">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonDatHan__KHACH__534D60F1" Association="Self.FK__DonDatHan__KHACH__534D60F1">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="DonDatHang" EntitySet="DonDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__PRODUCT__47DBAE45" Association="Self.FK__GioHang__PRODUCT__47DBAE45">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__RESTOCK__48CFD27E" Association="Self.FK__GioHang__RESTOCK__48CFD27E">
+            <End Role="Restocks" EntitySet="Restocks" />
+            <End Role="GioHang" EntitySet="GioHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CATEGOR__3F466844" Association="Self.FK__Product__CATEGOR__3F466844">
+            <End Role="CategoryCon" EntitySet="CategoryCon" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__SIZE_ID__403A8C7D" Association="Self.FK__Product__SIZE_ID__403A8C7D">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restocks__SIZE_I__440B1D61" Association="Self.FK__Restocks__SIZE_I__440B1D61">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="Restocks" EntitySet="Restocks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLWebBanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLWebBanHangEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Abouts" EntityType="QLWebBanHangModel.About" />
+          <EntitySet Name="CategoryChas" EntityType="QLWebBanHangModel.CategoryCha" />
+          <EntitySet Name="CategoryCons" EntityType="QLWebBanHangModel.CategoryCon" />
+          <EntitySet Name="ChiTietDonDatHangs" EntityType="QLWebBanHangModel.ChiTietDonDatHang" />
+          <EntitySet Name="Contacts" EntityType="QLWebBanHangModel.Contact" />
+          <EntitySet Name="DonDatHangs" EntityType="QLWebBanHangModel.DonDatHang" />
+          <EntitySet Name="GioHangs" EntityType="QLWebBanHangModel.GioHang" />
+          <EntitySet Name="KhachHangs" EntityType="QLWebBanHangModel.KhachHang" />
+          <EntitySet Name="News" EntityType="QLWebBanHangModel.News" />
+          <EntitySet Name="NhanViens" EntityType="QLWebBanHangModel.NhanVien" />
+          <EntitySet Name="Products" EntityType="QLWebBanHangModel.Product" />
+          <EntitySet Name="Restocks" EntityType="QLWebBanHangModel.Restock" />
+          <EntitySet Name="Sizes" EntityType="QLWebBanHangModel.Size" />
+          <EntitySet Name="sysdiagrams" EntityType="QLWebBanHangModel.sysdiagram" />
+          <AssociationSet Name="FK__CategoryC__CATEG__3A81B327" Association="QLWebBanHangModel.FK__CategoryC__CATEG__3A81B327">
+            <End Role="CategoryCha" EntitySet="CategoryChas" />
+            <End Role="CategoryCon" EntitySet="CategoryCons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__CATEGOR__3F466844" Association="QLWebBanHangModel.FK__Product__CATEGOR__3F466844">
+            <End Role="CategoryCon" EntitySet="CategoryCons" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__DONDA__571DF1D5" Association="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5">
+            <End Role="DonDatHang" EntitySet="DonDatHangs" />
+            <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDo__PRODU__5629CD9C" Association="QLWebBanHangModel.FK__ChiTietDo__PRODU__5629CD9C">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonDatHan__KHACH__534D60F1" Association="QLWebBanHangModel.FK__DonDatHan__KHACH__534D60F1">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="DonDatHang" EntitySet="DonDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__PRODUCT__47DBAE45" Association="QLWebBanHangModel.FK__GioHang__PRODUCT__47DBAE45">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__RESTOCK__48CFD27E" Association="QLWebBanHangModel.FK__GioHang__RESTOCK__48CFD27E">
+            <End Role="Restock" EntitySet="Restocks" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__SIZE_ID__403A8C7D" Association="QLWebBanHangModel.FK__Product__SIZE_ID__403A8C7D">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restocks__SIZE_I__440B1D61" Association="QLWebBanHangModel.FK__Restocks__SIZE_I__440B1D61">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="Restock" EntitySet="Restocks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="ABOUT_ID" />
+          </Key>
+          <Property Name="ABOUT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CategoryCha">
+          <Key>
+            <PropertyRef Name="CATEGORYCHA_ID" />
+          </Key>
+          <Property Name="CATEGORYCHA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENLOAISP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryCons" Relationship="QLWebBanHangModel.FK__CategoryC__CATEG__3A81B327" FromRole="CategoryCha" ToRole="CategoryCon" />
+        </EntityType>
+        <EntityType Name="CategoryCon">
+          <Key>
+            <PropertyRef Name="CATEGORYCON_ID" />
+          </Key>
+          <Property Name="CATEGORYCON_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORYCHA_ID" Type="Int32" />
+          <Property Name="TENLOAISP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryCha" Relationship="QLWebBanHangModel.FK__CategoryC__CATEG__3A81B327" FromRole="CategoryCon" ToRole="CategoryCha" />
+          <NavigationProperty Name="Products" Relationship="QLWebBanHangModel.FK__Product__CATEGOR__3F466844" FromRole="CategoryCon" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ChiTietDonDatHang">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="DONDATHANG_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DONDATHANG_ID" Type="Int32" Nullable="false" />
+          <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="GIA" Type="Double" />
+          <NavigationProperty Name="DonDatHang" Relationship="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5" FromRole="ChiTietDonDatHang" ToRole="DonDatHang" />
+          <NavigationProperty Name="Product" Relationship="QLWebBanHangModel.FK__ChiTietDo__PRODU__5629CD9C" FromRole="ChiTietDonDatHang" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="CONTACT_ID" />
+          </Key>
+          <Property Name="CONTACT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOTENNV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DonDatHang">
+          <Key>
+            <PropertyRef Name="DONDATHANG_ID" />
+          </Key>
+          <Property Name="DONDATHANG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KHACHHANG_ID" Type="Int32" />
+          <Property Name="DATHANHTOAN" Type="Boolean" />
+          <Property Name="DAHUY" Type="Boolean" Nullable="false" />
+          <Property Name="DAXOA" Type="Boolean" Nullable="false" />
+          <Property Name="NGAYLAPDON" Type="DateTime" Precision="3" />
+          <Property Name="NGAYGIAOHANG" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ChiTietDonDatHangs" Relationship="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5" FromRole="DonDatHang" ToRole="ChiTietDonDatHang" />
+          <NavigationProperty Name="KhachHang" Relationship="QLWebBanHangModel.FK__DonDatHan__KHACH__534D60F1" FromRole="DonDatHang" ToRole="KhachHang" />
+        </EntityType>
+        <EntityType Name="GioHang">
+          <Key>
+            <PropertyRef Name="CART_ID" />
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="RESTOCKS_ID" />
+          </Key>
+          <Property Name="CART_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="RESTOCKS_ID" Type="Int32" Nullable="false" />
+          <Property Name="SLSP" Type="Int32" />
+          <Property Name="TONGTIEN" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="QLWebBanHangModel.FK__GioHang__PRODUCT__47DBAE45" FromRole="GioHang" ToRole="Product" />
+          <NavigationProperty Name="Restock" Relationship="QLWebBanHangModel.FK__GioHang__RESTOCK__48CFD27E" FromRole="GioHang" ToRole="Restock" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="KHACHHANG_ID" />
+          </Key>
+          <Property Name="KHACHHANG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENKH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="Int32" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DonDatHangs" Relationship="QLWebBanHangModel.FK__DonDatHan__KHACH__534D60F1" FromRole="KhachHang" ToRole="DonDatHang" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NEWS_ID" />
+          </Key>
+          <Property Name="NEWS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CHITIET" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYDANG" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="NHANVIEN_ID" />
+          </Key>
+          <Property Name="NHANVIEN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENNV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADUSERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORYCON_ID" Type="Int32" />
+          <Property Name="SIZE_ID" Type="Int32" />
+          <Property Name="TENSP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mota" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SL" Type="Int32" Nullable="false" />
+          <Property Name="GIA" Type="Double" />
+          <NavigationProperty Name="CategoryCon" Relationship="QLWebBanHangModel.FK__Product__CATEGOR__3F466844" FromRole="Product" ToRole="CategoryCon" />
+          <NavigationProperty Name="ChiTietDonDatHangs" Relationship="QLWebBanHangModel.FK__ChiTietDo__PRODU__5629CD9C" FromRole="Product" ToRole="ChiTietDonDatHang" />
+          <NavigationProperty Name="GioHangs" Relationship="QLWebBanHangModel.FK__GioHang__PRODUCT__47DBAE45" FromRole="Product" ToRole="GioHang" />
+          <NavigationProperty Name="Size" Relationship="QLWebBanHangModel.FK__Product__SIZE_ID__403A8C7D" FromRole="Product" ToRole="Size" />
+        </EntityType>
+        <EntityType Name="Restock">
+          <Key>
+            <PropertyRef Name="RESTOCKS_ID" />
+          </Key>
+          <Property Name="RESTOCKS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIZE_ID" Type="Int32" />
+          <Property Name="TENSP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mota" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SL" Type="Int32" Nullable="false" />
+          <Property Name="GIA" Type="Double" />
+          <NavigationProperty Name="GioHangs" Relationship="QLWebBanHangModel.FK__GioHang__RESTOCK__48CFD27E" FromRole="Restock" ToRole="GioHang" />
+          <NavigationProperty Name="Size" Relationship="QLWebBanHangModel.FK__Restocks__SIZE_I__440B1D61" FromRole="Restock" ToRole="Size" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="SIZE_ID" />
+          </Key>
+          <Property Name="SIZE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TENSIZE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="QLWebBanHangModel.FK__Product__SIZE_ID__403A8C7D" FromRole="Size" ToRole="Product" />
+          <NavigationProperty Name="Restocks" Relationship="QLWebBanHangModel.FK__Restocks__SIZE_I__440B1D61" FromRole="Size" ToRole="Restock" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__CategoryC__CATEG__3A81B327">
+          <End Type="QLWebBanHangModel.CategoryCha" Role="CategoryCha" Multiplicity="0..1" />
+          <End Type="QLWebBanHangModel.CategoryCon" Role="CategoryCon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryCha">
+              <PropertyRef Name="CATEGORYCHA_ID" />
+            </Principal>
+            <Dependent Role="CategoryCon">
+              <PropertyRef Name="CATEGORYCHA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__CATEGOR__3F466844">
+          <End Type="QLWebBanHangModel.CategoryCon" Role="CategoryCon" Multiplicity="0..1" />
+          <End Type="QLWebBanHangModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryCon">
+              <PropertyRef Name="CATEGORYCON_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CATEGORYCON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__DONDA__571DF1D5">
+          <End Type="QLWebBanHangModel.DonDatHang" Role="DonDatHang" Multiplicity="1" />
+          <End Type="QLWebBanHangModel.ChiTietDonDatHang" Role="ChiTietDonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonDatHang">
+              <PropertyRef Name="DONDATHANG_ID" />
+            </Principal>
+            <Dependent Role="ChiTietDonDatHang">
+              <PropertyRef Name="DONDATHANG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDo__PRODU__5629CD9C">
+          <End Type="QLWebBanHangModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="QLWebBanHangModel.ChiTietDonDatHang" Role="ChiTietDonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ChiTietDonDatHang">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonDatHan__KHACH__534D60F1">
+          <End Type="QLWebBanHangModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+          <End Type="QLWebBanHangModel.DonDatHang" Role="DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="KHACHHANG_ID" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="KHACHHANG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__PRODUCT__47DBAE45">
+          <End Type="QLWebBanHangModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="QLWebBanHangModel.GioHang" Role="GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__RESTOCK__48CFD27E">
+          <End Type="QLWebBanHangModel.Restock" Role="Restock" Multiplicity="1" />
+          <End Type="QLWebBanHangModel.GioHang" Role="GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restock">
+              <PropertyRef Name="RESTOCKS_ID" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="RESTOCKS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__SIZE_ID__403A8C7D">
+          <End Type="QLWebBanHangModel.Size" Role="Size" Multiplicity="0..1" />
+          <End Type="QLWebBanHangModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restocks__SIZE_I__440B1D61">
+          <End Type="QLWebBanHangModel.Size" Role="Size" Multiplicity="0..1" />
+          <End Type="QLWebBanHangModel.Restock" Role="Restock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="SIZE_ID" />
+            </Principal>
+            <Dependent Role="Restock">
+              <PropertyRef Name="SIZE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLWebBanHangModelStoreContainer" CdmEntityContainer="QLWebBanHangEntities1">
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="ABOUT_ID" ColumnName="ABOUT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryChas">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.CategoryCha">
+              <MappingFragment StoreEntitySet="CategoryCha">
+                <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+                <ScalarProperty Name="CATEGORYCHA_ID" ColumnName="CATEGORYCHA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryCons">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.CategoryCon">
+              <MappingFragment StoreEntitySet="CategoryCon">
+                <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+                <ScalarProperty Name="CATEGORYCHA_ID" ColumnName="CATEGORYCHA_ID" />
+                <ScalarProperty Name="CATEGORYCON_ID" ColumnName="CATEGORYCON_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDonDatHangs">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.ChiTietDonDatHang">
+              <MappingFragment StoreEntitySet="ChiTietDonDatHang">
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="DONDATHANG_ID" ColumnName="DONDATHANG_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="HOTENNV" ColumnName="HOTENNV" />
+                <ScalarProperty Name="CONTACT_ID" ColumnName="CONTACT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonDatHangs">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.DonDatHang">
+              <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="NGAYGIAOHANG" ColumnName="NGAYGIAOHANG" />
+                <ScalarProperty Name="NGAYLAPDON" ColumnName="NGAYLAPDON" />
+                <ScalarProperty Name="DAXOA" ColumnName="DAXOA" />
+                <ScalarProperty Name="DAHUY" ColumnName="DAHUY" />
+                <ScalarProperty Name="DATHANHTOAN" ColumnName="DATHANHTOAN" />
+                <ScalarProperty Name="KHACHHANG_ID" ColumnName="KHACHHANG_ID" />
+                <ScalarProperty Name="DONDATHANG_ID" ColumnName="DONDATHANG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GioHangs">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.GioHang">
+              <MappingFragment StoreEntitySet="GioHang">
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="SLSP" ColumnName="SLSP" />
+                <ScalarProperty Name="RESTOCKS_ID" ColumnName="RESTOCKS_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="UPASSWORD" ColumnName="UPASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="KHACHHANG_ID" ColumnName="KHACHHANG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="CHITIET" ColumnName="CHITIET" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="NEWS_ID" ColumnName="NEWS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="ADPASSWORD" ColumnName="ADPASSWORD" />
+                <ScalarProperty Name="ADUSERNAME" ColumnName="ADUSERNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+                <ScalarProperty Name="NHANVIEN_ID" ColumnName="NHANVIEN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="SIZE_ID" ColumnName="SIZE_ID" />
+                <ScalarProperty Name="CATEGORYCON_ID" ColumnName="CATEGORYCON_ID" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restocks">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.Restock">
+              <MappingFragment StoreEntitySet="Restocks">
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="SIZE_ID" ColumnName="SIZE_ID" />
+                <ScalarProperty Name="RESTOCKS_ID" ColumnName="RESTOCKS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sizes">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="TENSIZE" ColumnName="TENSIZE" />
+                <ScalarProperty Name="SIZE_ID" ColumnName="SIZE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLWebBanHangModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

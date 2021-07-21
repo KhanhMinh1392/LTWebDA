@@ -1,0 +1,91 @@
+﻿@model Web.Models.KhachHang
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login LEO</title>
+    @Styles.Render("/Content/css/login.css")
+    <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                @using (Html.BeginForm("Resigter", "Login",
+                    new { ReturnUrl = ViewBag.ReturnUrl },
+                    FormMethod.Post, new { @class = "sign-in-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <img class="logo" src="~/Content/img/img_Login/logo.png" alt="">
+                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        @Html.TextBoxFor(model => model.USERNAME, new { placeholder = "Username" })
+                        <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.USERNAME)</p>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        @Html.TextBoxFor(model => model.TENKH, new { placeholder = "Tên Khách Hàng" })
+                        <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.TENKH)</p>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        @Html.TextBoxFor(model => model.EMAIL, new { placeholder = "Email" })
+                        <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.EMAIL)</p>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        @Html.TextBoxFor(model => model.SDT, new { placeholder = "Số điện thoại" })
+                        <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.SDT)</p>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        @Html.PasswordFor(model => model.UPASSWORD, new { placeholder = "Password" })
+                        <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.UPASSWORD)</p>
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" />
+                    <p class="social-text">Or Sign up with social platforms</p>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.google.com.vn/" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Sigin in</h3>
+                    <p>
+                        Nếu bạn đăng kí thành công thì có thể quay về trang đăng nhập để vào WEBSITE LEO SHOP
+                    </p>
+                    <a href="@Url.Action("Login","Login")">
+                        <button class="btn transparent" id="sign-in-btn">
+                            Sign in
+                        </button>
+                    </a>
+                </div>
+                <img src="~/Content/img/img_Login/register.svg" class="image" alt="" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

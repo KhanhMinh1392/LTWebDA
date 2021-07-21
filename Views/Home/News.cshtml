@@ -1,0 +1,90 @@
+﻿@using Web.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<News>
+@{ ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml"; }
+<div id="inner_banner" class="section inner_banner_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="title-holder">
+                        <div class="title-holder-cell text-left">
+                            <h1 class="page-title">News</h1>
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li class="active">News</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end inner page banner -->
+<!-- section -->
+<div class="section padding_layout_1 blog_list">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
+                <div class="full">
+                    @foreach (var item in Model.OrderByDescending(m=>m.NGAYDANG))
+                    {
+                        <div class="blog_section">
+                            <div class="blog_feature_img"> <img class="img-responsive" src="~/Content/img/img_news/@item.HINHANH" alt="#"> </div>
+                            <div class="blog_feature_cantant">
+                                <p class="blog_head">@item.TIEUDE</p>
+                                <div class="post_info">
+                                    <ul>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> Marketing</li>
+                                        <li><i class="fa fa-comment" aria-hidden="true"></i> 5</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> @item.NGAYDANG</li>
+                                    </ul>
+                                </div>
+                                <p>@item.CHITIET</p>
+                                <div class="bottom_info">
+                                    <div class="pull-left"><a class="btn sqaure_bt" href="it_blog_detail.html">Read More<i class="fa fa-angle-right"></i></a></div>
+                                    <div class="pull-right">
+                                        <div class="shr">Share: </div>
+                                        <div class="social_icon">
+                                            <ul>
+                                                <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="center">
+                        @Html.PagedListPager(Model, page => Url.Action("News", "Home", new { page = page }))
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
+                <div class="side_bar">
+                    <div class="side_bar_blog">
+                        <h4>SEARCH</h4>
+                        <div class="side_bar_search">
+                            <div class="input-group stylish-input-group">
+                                <input class="form-control" placeholder="Search" type="text">
+                                <span class="input-group-addon">
+                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side_bar_blog">
+                        <h4>ABOUT SHOP</h4>
+                        <p>DirtyCoins xuất hiện trên thị trường từ đầu năm 2017, DirtyCoins mang sức mạnh của một thương hiệu local brand đầy cá tính với những sản phẩm thời trang hàng đầu xu thế. DirtyCoins thực chất là một cách lồng ghép khéo léo về sự ra đời của thương hiệu. Chữ Y trên đồng tiền tượng trưng cho tiền thân của DirtyCoins, The Yars Shop. Bắt nguồn từ Yars, DirtyCoins trân trọng giá trị của đồng tiền xương máu, thành quả lao động đầy mồ hôi, bụi bẩn và nước mắt. Với sức hút của mình, Dirty Coins trở thành biểu tượng cho phong cách thời trang mạnh mẽ, táo bạo, và được ưa chuộng rộng rãi. DirtyCoins mang đến một cái góc độ độc đáo không những về phong cách sống mà còn về gout ăn mặc hiện đại. DirtyCoins nhận thức được nhu cầu đang phát triển của thị trường Streetwear Việt Nam. Những mặt hàng thời trang tại DirtyCoins được thiết kế với sự kết hợp văn hoá Châu Á và Châu Âu, tạo ra phong cách độc đáo và mới mẻ. Bên cạnh đó ,với sự phá cách từ tông màu trắng đen, tông màu chủ đạo của đa số dòng thời trang Streetwear, các mẫu thời trang tại Dirtycoins mang nhiều màu sắc phong phú. Đây là cách DirtyCoins mang đến giá trị cho cộng đồng trẻ yêu thích Streetwear, khuyến khích họ mạo hiểm trong gu ăn mặc của mình. Với tính cách mạo hiểm, không ngại rủi ro, DirtyCoins dần mở rộng thị trường trong suốt quá trình phát triển các chi nhánh trên toàn quốc, đem tới một nền văn hoá rất riêng của DirtyCoins..</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
