@@ -55,6 +55,7 @@ namespace Web.Controllers
                 cthd.TENSP = item.TENSP;
                 cthd.SOLUONG = item.sl;
                 cthd.GIA = (double)item.GIA;
+                cthd.THANHTIEN = int.Parse(item.ThanhTien.ToString());
                 db.ChiTietDonDatHangs.Add(cthd);
             }
             db.SaveChanges();

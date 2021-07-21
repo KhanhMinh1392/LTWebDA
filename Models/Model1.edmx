@@ -39,6 +39,7 @@
           <Property Name="TENSP" Type="nvarchar" MaxLength="50" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="GIA" Type="float" />
+          <Property Name="THANHTIEN" Type="float" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -405,6 +406,7 @@
           <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="GIA" Type="Double" />
+          <Property Name="THANHTIEN" Type="Double" />
           <NavigationProperty Name="DonDatHang" Relationship="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5" FromRole="ChiTietDonDatHang" ToRole="DonDatHang" />
           <NavigationProperty Name="Product" Relationship="QLWebBanHangModel.FK__ChiTietDo__PRODU__5629CD9C" FromRole="ChiTietDonDatHang" ToRole="Product" />
         </EntityType>
@@ -641,7 +643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -677,6 +679,7 @@
           <EntitySetMapping Name="ChiTietDonDatHangs">
             <EntityTypeMapping TypeName="QLWebBanHangModel.ChiTietDonDatHang">
               <MappingFragment StoreEntitySet="ChiTietDonDatHang">
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />

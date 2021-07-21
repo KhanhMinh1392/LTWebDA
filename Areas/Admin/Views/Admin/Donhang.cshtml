@@ -1,7 +1,8 @@
-﻿
-@{
-    ViewBag.Title = "Donhang";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+﻿@using Web.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<DonDatHang>
+@{ ViewBag.Title = "Donhang";
+                Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
 }
 
 <main>
@@ -25,51 +26,18 @@
                         </tr>
                     </thread>
                     <tbody>
-                        <tr>
-                            <td class="content"><a href="#">SON111111</a></td>
-                            <td>Đào Khánh Minh</td>
-                            <td class="content">Đã Thanh Toán</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">27/06/2021</td>
-                            <td class="content"><i class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="content"><a href="#">SON111111</a></td>
-                            <td>Nguyễn Đức Công Khoa</td>
-                            <td class="content">Đã Thanh Toán</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">27/06/2021</td>
-                            <td class="content"><i class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="content"><a href="#">SON111111</a></td>
-                            <td>Hoàng Thái Kha</td>
-                            <td class="content">Đã Thanh Toán</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">27/06/2021</td>
-                            <td class="content"><i class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="content"><a href="#">SON111111</a></td>
-                            <td>Trương Tín</td>
-                            <td class="content">Đã Thanh Toán</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">27/06/2021</td>
-                            <td class="content"><i class="fas fa-trash-alt"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="content"><a href="#">SON111111</a></td>
-                            <td>Cristian Ronaldo</td>
-                            <td class="content">Đã Thanh Toán</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">390.000VNĐ</td>
-                            <td class="content">27/06/2021</td>
-                            <td class="content"><i class="fas fa-trash-alt"></i></td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
+                                <td>@item.KhachHang.TENKH</td>
+                                <td class="content">@item.DAHUY</td>
+                                <td class="content">@item.DATHANHTOAN</td>
+                                <td class="content"></td>
+                                <td class="content">@item.NGAYLAPDON</td>
+                                <td class="content"><i class="fas fa-trash-alt"></i></td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

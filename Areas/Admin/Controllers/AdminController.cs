@@ -24,9 +24,13 @@ namespace Web.Areas.Admin.Controllers
             int pagenumber = (page ?? 1);
             return View(listKhachhang.ToPagedList(pagenumber, pagesize));
         }
-        public ActionResult Donhang()
+        public ActionResult Donhang(int? page)
         {
-            return View();
+            var lstDH = new List<DonDatHang>();
+            lstDH = db.DonDatHangs.ToList();
+            int pagesize = 5;
+            int pagenumber = (page ?? 1);
+            return View(lstDH.ToPagedList(pagenumber, pagesize));
         }
         public ActionResult Sanpham(int? page)
         {
