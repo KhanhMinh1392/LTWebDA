@@ -31,6 +31,12 @@ namespace Web.Areas.Admin.Controllers
             int pagesize = 5;
             int pagenumber = (page ?? 1);
             return View(lstDH.ToPagedList(pagenumber, pagesize));
+            //var qr = (from hd in db.DonDatHangs
+            //          join cthd in db.ChiTietDonDatHangs
+            //          on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
+            //          select hd
+            //          ).ToList();
+            //return View(qr);
         }
         public ActionResult Sanpham(int? page)
         {

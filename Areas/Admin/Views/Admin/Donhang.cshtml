@@ -1,8 +1,9 @@
 ﻿@using Web.Models
 @using PagedList.Mvc;
 @model PagedList.IPagedList<DonDatHang>
+
 @{ ViewBag.Title = "Donhang";
-                Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <main>
@@ -11,35 +12,51 @@
         <div class="activity-grid">
             <div class="activity-card">
                 <div class="right">
-                    <a href="@Url.Action("CreateBill","Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
+                    <a href="@Url.Action("CreateBill", "Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
                 </div>
-                <table>
-                    <thread>
-                        <tr>
-                            <th>Mã ĐH</th>
-                            <th>Tên Khách Hàng</th>
-                            <th>Trạng Thái Đơn Hàng</th>
-                            <th>Thanh Toán</th>
-                            <th>Khách Phải Trả</th>
-                            <th>Ngày Tạo Đơn</th>
-                            <th>Chức Năng</th>
-                        </tr>
-                    </thread>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                @{ 
+                    var db = new Web.Models.QLWebBanHangEntities1();
+                    var qr = (from hd in db.DonDatHangs
+                              join cthd in db.ChiTietDonDatHangs
+                              on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
+                              select new
+                              {
+                                  hd.DONDATHANG_ID,
+                                  hd.KhachHang.TENKH,
+                                  hd.DAHUY,
+                                  hd.DATHANHTOAN,
+                                  hd.NGAYLAPDON,
+                                  cthd.THANHTIEN
+                              }
+                            ).ToList();
+                    <table>
+                        <thread>
+                            <tr>
+                                <th>Mã ĐH</th>
+                                <th>Tên Khách Hàng</th>
+                                <th>Trạng Thái Đơn Hàng</th>
+                                <th>Thanh Toán</th>
+                                <th>Khách Phải Trả</th>
+                                <th>Ngày Tạo Đơn</th>
+                                <th>Chức Năng</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                            @foreach (var item in qr)
+                            {
                             <tr>
                                 <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
-                                <td>@item.KhachHang.TENKH</td>
+                                <td>@item.TENKH</td>
                                 <td class="content">@item.DAHUY</td>
                                 <td class="content">@item.DATHANHTOAN</td>
-                                <td class="content"></td>
+                                <td class="content">@item.THANHTIEN</td>
                                 <td class="content">@item.NGAYLAPDON</td>
                                 <td class="content"><i class="fas fa-trash-alt"></i></td>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                            }   
+                        </tbody>
+                    </table>
+                    }
             </div>
             <div class="summary">
                 <div class="summary-card">
