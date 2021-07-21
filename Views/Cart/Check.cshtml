@@ -47,25 +47,25 @@
                             <p>Nếu bạn đã mua sắm với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào ô bên dưới. Nếu bạn là khách hàng mới, vui lòng chuyển sang phần Thanh toán &amp; Giao hàng</p>
                             @using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
                             {
-                <fieldset>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <label for="username">Username <span class="required">*</span></label>
-                            <input class="input-text" name="username" id="username" required="" type="text">
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <label for="password">Password <span class="required">*</span></label>
-                            <input class="input-text" name="password" id="password" required="" type="password">
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 btn-login">
-                            <button class="bt_main">Login</button>
-                            <span class="remeber">
-                                <input type="checkbox">
-                                Remember me
-                            </span>
-                        </div>
-                    </div>
-                </fieldset>}
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="username">Username <span class="required">*</span></label>
+                                            <input class="input-text" name="username" id="username" required="" type="text">
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="password">Password <span class="required">*</span></label>
+                                            <input class="input-text" name="password" id="password" required="" type="password">
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 btn-login">
+                                            <button class="bt_main">Login</button>
+                                            <span class="remeber">
+                                                <input type="checkbox">
+                                                Remember me
+                                            </span>
+                                        </div>
+                                    </div>
+                                </fieldset>}
                         </div>
                     </div>
                     <div class="tab-info coupon-section">
@@ -100,25 +100,25 @@
                                 <div class="col-md-6">
                                     <div class="form-field">
                                         <label>Họ Và Tên: <span class="red">*</span></label>
-                                        <input class="sinput" name="TENKH" type="text">
+                                        <input class="sinput" name="TENKH" type="text" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-field">
                                         <label>Email address <span class="red">*</span></label>
-                                        <input class="sinput" name="EMAIL" type="email">
+                                        <input class="sinput" name="EMAIL" type="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-field">
                                         <label>Số điện thoại <span class="red">*</span></label>
-                                        <input class="sinput" name="SDT" type="text">
+                                        <input class="sinput" name="SDT" type="text" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-field">
                                         <label>Địa Chỉ <span class="red">*</span></label>
-                                        <textarea class="sinput" name="DIACHI"></textarea>
+                                        <textarea class="sinput" name="DIACHI" required></textarea>
                                     </div>
                                 </div>
                                 @*<div class="col-md-6">
