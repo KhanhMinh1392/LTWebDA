@@ -11,16 +11,6 @@
     <section class="recent">
         <div class="activity-grid">
             <div class="activity-card">
-                <div class="left">
-                  <form class="example" action="" style="margin:auto;max-width:300px">
-                        @using(Html.BeginForm("Sanpham","Admin",FormMethod.Post))
-                        {
-                            @Html.TextBox("Searchstr",ViewBag.CurrentFilter as string, new { placeholder = "Search.."})
-                            @*<input type="text" placeholder="Search.." name="search2">*@
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        }
-                 </form>
-                </div> 
                 <div class="right">
                     <a href="@Url.Action("CreateProduct","Add")"><button><i class="fas fa-plus-circle"></i> Tạo Sản Phẩm</button></a>
                 </div>

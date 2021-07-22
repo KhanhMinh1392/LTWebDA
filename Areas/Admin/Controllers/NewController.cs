@@ -70,6 +70,7 @@ namespace Web.Areas.Admin.Controllers
             if (id == null)
             {
                 Response.StatusCode = 404;
+                return null;
             }
             News pr = db.News.SingleOrDefault(n => n.NEWS_ID == id);
             if (pr == null)
@@ -81,6 +82,8 @@ namespace Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(News model, HttpPostedFileBase hinhanh)
         {
+            ViewBag.SP = new SelectList(db.News,model.NEWS_ID);
+            db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             if (hinhanh.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(hinhanh.FileName);
@@ -94,10 +97,6 @@ namespace Web.Areas.Admin.Controllers
                 {
                     hinhanh.SaveAs(path);
                     model.HINHANH = fileName;
-                }
-                if (ModelState.IsValid)
-                {
-                    db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 }
                 db.SaveChanges();
                 return RedirectToAction("News", "New");

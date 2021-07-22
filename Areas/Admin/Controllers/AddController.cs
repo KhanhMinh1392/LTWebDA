@@ -65,31 +65,31 @@ namespace Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Product model, HttpPostedFileBase hinhanh)
         {
-            //if (hinhanh.ContentLength > 0)
-            //{
-            //    var fileName = Path.GetFileName(hinhanh.FileName);
-            //    var path = Path.Combine(Server.MapPath("~/Content/img/it_service"), fileName);
-            //    if (System.IO.File.Exists(path))
-            //    {
-            //        ViewBag.upload = "Hình ảnh đã tồn tại";
-            //        return View();
-            //    }
-            //    else
-            //    {
-            //        hinhanh.SaveAs(path);
-            //        model.HINHANH = fileName;
-            //    }
+            if (hinhanh.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(hinhanh.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/img/it_service"), fileName);
+                if (System.IO.File.Exists(path))
+                {
+                    ViewBag.upload = "Hình ảnh đã tồn tại";
+                    return View();
+                }
+                else
+                {
+                    hinhanh.SaveAs(path);
+                    model.HINHANH = fileName;
+                }
                 if (ModelState.IsValid)
                 {
                     ViewBag.PRODUCT_ID = new SelectList(db.CategoryCons.OrderBy(n => n.CATEGORYCON_ID), "CATEGORYCON_ID", "TENLOAISP", model.PRODUCT_ID);
                     db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 }
                 db.SaveChanges();
-                return RedirectToAction("Sanpham", "Admin",model);
-            //}
-            //return View(model);
+                return RedirectToAction("Sanpham", "Admin", model);
+            }
+            return View(model);
         }
-        public ActionResult Delete(int id)
+            public ActionResult Delete(int id)
         {
             Product pr = db.Products.SingleOrDefault(n => n.PRODUCT_ID == id);
             if(pr == null)

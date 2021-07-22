@@ -68,15 +68,14 @@
                                     <td class="content">@item.THANHTIEN</td>
                                     <td class="content">@item.NGAYLAPDON</td>
                                     <td class="content">
-                                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
-                                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                                        <a href="@Url.Action("Edit","DonHang",new {id=item.DONDATHANG_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
                                     </td>
                                 </tr>}
                         </tbody>
                     </table> }
                 <div class="pagination">
                     Trang @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
-                    @Html.PagedListPager(Model, page => Url.Action("Sanpham", "Admin", new { page = page, @class = "pagenum" }))
+                    @Html.PagedListPager(Model, page => Url.Action("Donhang", "Admin", new { page = page, @class = "pagenum" }))
                 </div>
             </div>
             <div class="summary">
