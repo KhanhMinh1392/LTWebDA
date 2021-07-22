@@ -32,19 +32,19 @@
                     <a href="@Url.Action("CreateBill", "Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
                 </div>
                     @{ var db = new Web.Models.QLWebBanHangEntities1();
-                                    var qr = (from hd in db.DonDatHangs
-                                              join cthd in db.ChiTietDonDatHangs
-                                              on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
-                                              select new
-                                              {
-                                                  hd.DONDATHANG_ID,
-                                                  hd.KhachHang.TENKH,
-                                                  hd.DAHUY,
-                                                  hd.DATHANHTOAN,
-                                                  hd.NGAYLAPDON,
-                                                  cthd.THANHTIEN
-                                              }
-                                            ).Distinct().ToList();
+                       var qr = (from hd in db.DonDatHangs
+                                join cthd in db.ChiTietDonDatHangs
+                                on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
+                                select new
+                                {
+                                    hd.DONDATHANG_ID,
+                                    hd.KhachHang.TENKH,
+                                    hd.DAHUY,
+                                    hd.DATHANHTOAN,
+                                    hd.NGAYLAPDON,
+                                    cthd.THANHTIEN
+                                }
+                            ).Distinct().ToList();
                     <table>
                         <thread>
                             <tr>

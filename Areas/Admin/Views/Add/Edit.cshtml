@@ -32,11 +32,28 @@
                         </div>
                         <div class="right">
                             <br>
-                            @Html.LabelFor(model => model.SIZE_ID)
-                            @Html.TextBoxFor(model => model.Size.TENSIZE, new { @class = "" })
+                            @Html.LabelFor(model => model.Size)
+                            @{ 
+                                Web.Models.QLWebBanHangEntities1 db = new Web.Models.QLWebBanHangEntities1();
+                                var sz = db.Sizes.ToList();
+                                <select name="SIZE_ID">
+                                    @foreach(var item in sz)
+                                    {
+                                        <option value="@item.SIZE_ID">@item.TENSIZE</option>
+                                    }
+                                </select>
+                            }
                             <br>
                             Loại Sản Phẩm <br />
-                            @Html.TextBoxFor(model => model.CategoryCon.TENLOAISP, new { @class = "" })
+                            @{ 
+                                var lsp = db.CategoryCons.ToList();
+                                <select name="CATEGORYCON_ID">
+                                    @foreach(var item in lsp)
+                                    {
+                                        <option value="@item.CATEGORYCON_ID">@item.TENLOAISP</option>
+                                    }
+                                </select>
+                            }
                             <br>
                             Giá<br>
                             @Html.TextBoxFor(model => model.GIA, new { @class = "" })

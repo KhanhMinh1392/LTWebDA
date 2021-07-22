@@ -78,9 +78,19 @@ namespace Web.Areas.Admin.Controllers
             ViewBag.Songuoidangonl = HttpContext.Application["SoNguoiDangOnl"].ToString();
             return View(lstDH.ToPagedList(pagenumber, pagesize));
         }
-        public ActionResult Sanpham(int? page)
+        public ActionResult Sanpham(int? page,string Searchstr)
         {
             var listsanpham = new List<Product>();
+            if (!string.IsNullOrEmpty(Searchstr))
+            {
+                listsanpham = db.Products.Where(n => n.TENSP.Contains(Searchstr)).ToList();
+            }
+            else
+            {
+                listsanpham = db.Products.ToList();
+            }
+            ViewBag.CurrentFilter = Searchstr; 
+            //================================
             listsanpham = db.Products.ToList();
             int pagesize = 9;
             int pagenumber = (page ?? 1);

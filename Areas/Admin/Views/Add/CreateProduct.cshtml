@@ -28,10 +28,26 @@
                         <div class="right">
                             <br>
                             Size <br>
-                            @Html.TextBoxFor(model => model.Size.TENSIZE, new { @class = "" })
+                            @{ 
+                                Web.Models.QLWebBanHangEntities1 db = new Web.Models.QLWebBanHangEntities1();
+                                var sz = db.Sizes.ToList();
+                                <select name="SIZE_ID">
+                                    @foreach (var item in sz)
+                                    {
+                                        <option value="@item.SIZE_ID">@item.TENSIZE</option>
+                                    }
+                                </select> }
                             <br>
                             Loại Sản Phẩm <br>
-                            @Html.TextBoxFor(model => model.CategoryCon.CATEGORYCON_ID, new { @class = "" })
+                                @{ 
+                                var lsp = db.CategoryCons.ToList();
+                                <select name="CATEGORYCON_ID">
+                                    @foreach(var item in lsp)
+                                    {
+                                        <option value="@item.CATEGORYCON_ID">@item.TENLOAISP</option>
+                                    }
+                                </select>
+                            }
                             <br>
                             Giá<br>
                             <input type="text" name="GIA" id="">

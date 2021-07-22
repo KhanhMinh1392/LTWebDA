@@ -38,7 +38,7 @@
                         <div class="product-heading">
                             <h2>@Model.dbsanpham.TENSP</h2>
                         </div>
-                        <div class="product-detail-side"><span class="new-price">@Model.dbsanpham.GIA VNĐ</span> </div>
+                        <div class="product-detail-side"><span class="new-price">@string.Format("{0:#,0}", Model.dbsanpham.GIA) VNĐ</span> </div>
                         <div class="btn-size">
                             <button>Size S</button>
                             <button>Size M</button>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div id="reviews" class="tab-pane fade">
                                         <div class="product_review">
-                                            <h3>Reviews (2)</h3>
+                                            <h3>Bình Luận (2)</h3>
                                             <div class="commant-text row">
                                                 <div class="col-lg-2 col-md-2 col-sm-4">
                                                     <div class="profile"> <img class="img-responsive" src="~/Content/img/it_service/profile2.png" alt="#"> </div>
@@ -176,7 +176,7 @@
                                         <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                     </div>
                                     <div class="product_price">
-                                        <p><span class="new_price">@item.GIA</span></p>
+                                        <p><span class="new_price">@string.Format("{0:#,0}", item.GIA) VNĐ</span></p>
                                     </div>
                                 </div>
                             </div>

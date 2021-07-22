@@ -5,29 +5,22 @@
     ViewBag.Title = "Sanpham";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    .pagination a {
-        color: black;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
 
-        .pagination a.active {
-            background-color: dodgerblue;
-            color: white;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ddd;
-        }
-</style>
 <main>
     <h2 class="dash-title">Sản Phẩm</h2>
     <section class="recent">
         <div class="activity-grid">
             <div class="activity-card">
+                <div class="left">
+                  <form class="example" action="" style="margin:auto;max-width:300px">
+                        @using(Html.BeginForm("Sanpham","Admin",FormMethod.Post))
+                        {
+                            @Html.TextBox("Searchstr",ViewBag.CurrentFilter as string, new { placeholder = "Search.."})
+                            @*<input type="text" placeholder="Search.." name="search2">*@
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        }
+                 </form>
+                </div> 
                 <div class="right">
                     <a href="@Url.Action("CreateProduct","Add")"><button><i class="fas fa-plus-circle"></i> Tạo Sản Phẩm</button></a>
                 </div>
@@ -45,17 +38,18 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-            <tr>
-                <td class="content"><img src="~/Content/img/it_service/@item.HINHANH" alt="" style="width:60px"></td>
-                <td>@item.TENSP</td>
-                <td class="content">@item.CategoryCon.TENLOAISP</td>
-                <td class="content">@item.SL</td>
-                <td class="content">@item.GIA</td>
-                <td class="content">
-                    <a href="@Url.Action("Edit","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
-                    <a href="@Url.Action("Delete","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
-                </td>
-            </tr>}
+                            <tr>
+                                <td class="content"><img src="~/Content/img/it_service/@item.HINHANH" alt="" style="width:60px"></td>
+                                <td>@item.TENSP</td>
+                                <td class="content">@item.CategoryCon.TENLOAISP</td>
+                                <td class="content">@item.SL</td>
+                                <td class="content">@string.Format("{0:#,0}",item.GIA)</td>
+                                <td class="content">
+                                    <a href="@Url.Action("Edit","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
+                                    <a href="@Url.Action("Delete","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                                </td>
+                            </tr>
+}
                     </tbody>
                 </table>
                 <div class="pagination">
@@ -99,3 +93,57 @@
     </section>
 </main>
 
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+    .left {
+        float: left;
+        padding: 10px;
+    }
+
+    form.example input[type=text] {
+        padding: 5px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 5px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>

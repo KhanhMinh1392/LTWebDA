@@ -43,7 +43,7 @@
                                         <h4><a href="@Url.Action("DetailRS","Home",new {Id = item.RESTOCKS_ID})">@item.TENSP</a></h4>
                                     </div>
                                     <div class="product_price">
-                                        <p> <span class="new_price">@item.GIA VNĐ</span></p>
+                                        <p> <span class="new_price">@string.Format("{0:#,0}", item.GIA) VNĐ</span></p>
                                     </div>
                                 </div>
                             </div>
