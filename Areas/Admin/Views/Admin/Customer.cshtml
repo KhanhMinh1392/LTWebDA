@@ -46,20 +46,20 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-            <tr>
-                <a href="">
-                    <td class="content">@item.KHACHHANG_ID</td>
-                    <td>@item.TENKH</td>
-                    <td class="content">@item.EMAIL</td>
-                    <td class="content">@item.SDT</td>
-                    <td class="content">@item.USERNAME</td>
-                    <td class="content">
-                        <a href="@Url.Action("Delete","AddCustomer",new {id=item.KHACHHANG_ID})">
-                            <i class="fas fa-trash-alt" style="color: black"></i>
-                        </a>
-                    </td>
-                </a>
-            </tr>}
+                            <tr>
+                                <a href="">
+                                    <td class="content">@item.KHACHHANG_ID</td>
+                                    <td>@item.TENKH</td>
+                                    <td class="content">@item.EMAIL</td>
+                                    <td class="content">@item.SDT</td>
+                                    <td class="content">@item.USERNAME</td>
+                                    <td class="content">
+                                        <a href="@Url.Action("Delete","AddCustomer",new {id=item.KHACHHANG_ID})">
+                                            <i class="fas fa-trash-alt" style="color: black"></i>
+                                        </a>
+                                    </td>
+                                </a>
+                            </tr>}
                     </tbody>
                 </table>
                 <div class="pagination" style="cursor:pointer;">

@@ -91,16 +91,18 @@ namespace Web.Areas.Admin.Controllers
             ViewBag.Songuoidangonl = HttpContext.Application["SoNguoiDangOnl"].ToString();
             return View(listsanpham.ToPagedList(pagenumber,pagesize));
         }
-        public ActionResult Staff()
+        public ActionResult Staff(int? page)
         {
             var lstStaff = new List<NhanVien>();
             lstStaff = db.NhanViens.ToList();
+            int pagesize = 6;
+            int pagenumber = (page ?? 1);
             //============================
             ViewBag.Tongnhanvien = ThongkeNV();
             ViewBag.Tongkhachhang = ThongkeKH();
             ViewBag.Songuoitruycap = HttpContext.Application["SoNguoiTruyCap"].ToString();
             ViewBag.Songuoidangonl = HttpContext.Application["SoNguoiDangOnl"].ToString();
-            return View(lstStaff);
+            return View(lstStaff.ToPagedList(pagenumber, pagesize));
         }
     }
 }

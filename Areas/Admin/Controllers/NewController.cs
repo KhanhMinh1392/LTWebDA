@@ -13,6 +13,16 @@ namespace Web.Areas.Admin.Controllers
     public class NewController : Controller
     {
         QLWebBanHangEntities1 db = new QLWebBanHangEntities1();
+        public double ThongkeNV()
+        {
+            double nv = db.NhanViens.Count();
+            return nv;
+        }
+        public double ThongkeKH()
+        {
+            double tkkh = db.KhachHangs.Count();
+            return tkkh;
+        }
         // GET: Admin/New
         public ActionResult News(int? page)
         {
@@ -20,6 +30,10 @@ namespace Web.Areas.Admin.Controllers
             listnew = db.News.ToList();
             int pagesize = 4;
             int pagenumber = (page ?? 1);
+            ViewBag.Tongnhanvien = ThongkeNV();
+            ViewBag.Tongkhachhang = ThongkeKH();
+            ViewBag.Songuoitruycap = HttpContext.Application["SoNguoiTruyCap"].ToString();
+            ViewBag.Songuoidangonl = HttpContext.Application["SoNguoiDangOnl"].ToString();
             return View(listnew.ToPagedList(pagenumber, pagesize));
         }
         //create

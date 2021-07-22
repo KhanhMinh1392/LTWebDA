@@ -1,8 +1,26 @@
-﻿@model IEnumerable<Web.Models.NhanVien>
-@{
-    ViewBag.Title = "Staff";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+﻿@using Web.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<NhanVien>
+@{ ViewBag.Title = "Staff";
+   Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; 
 }
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+    .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+    }
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+
 <main>
     <h2>Staff</h2>
     <section class="recent">
@@ -25,19 +43,22 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-            <tr>
-                <a href="">
-                    <td class="content">@item.NHANVIEN_ID</td>
-                    <td>@item.TENNV</td>
-                    <td class="content">@item.EMAIL</td>
-                    <td class="content">@item.SDT</td>
-                    <td class="content">@item.ADUSERNAME</td>
-                    <td class="content"><a href="@Url.Action("Delete", "Staff" )"><i class="fas fa-trash-alt"></i></a></td>
-                </a>
-            </tr>
-}
+                            <tr>
+                                <a href="">
+                                    <td class="content">@item.NHANVIEN_ID</td>
+                                    <td>@item.TENNV</td>
+                                    <td class="content">@item.EMAIL</td>
+                                    <td class="content">@item.SDT</td>
+                                    <td class="content">@item.ADUSERNAME</td>
+                                    <td class="content"><a href="@Url.Action("Delete", "Staff" )"><i class="fas fa-trash-alt"></i></a></td>
+                                </a>
+                            </tr>}
                     </tbody>
                 </table>
+                <div class="pagination" style="cursor:pointer;">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Staff", "Admin", new { page = page, @class = "pagenum" }))
+                </div>
             </div>
             <div class="summary">
                 <div class="summary-card">

@@ -31,20 +31,20 @@
                 <div class="right">
                     <a href="@Url.Action("CreateBill", "Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
                 </div>
-                @{ var db = new Web.Models.QLWebBanHangEntities1();
-                                var qr = (from hd in db.DonDatHangs
-                                          join cthd in db.ChiTietDonDatHangs
-                                          on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
-                                          select new
-                                          {
-                                              hd.DONDATHANG_ID,
-                                              hd.KhachHang.TENKH,
-                                              hd.DAHUY,
-                                              hd.DATHANHTOAN,
-                                              hd.NGAYLAPDON,
-                                              cthd.THANHTIEN
-                                          }
-                                        ).Distinct().ToList();
+                    @{ var db = new Web.Models.QLWebBanHangEntities1();
+                                    var qr = (from hd in db.DonDatHangs
+                                              join cthd in db.ChiTietDonDatHangs
+                                              on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
+                                              select new
+                                              {
+                                                  hd.DONDATHANG_ID,
+                                                  hd.KhachHang.TENKH,
+                                                  hd.DAHUY,
+                                                  hd.DATHANHTOAN,
+                                                  hd.NGAYLAPDON,
+                                                  cthd.THANHTIEN
+                                              }
+                                            ).Distinct().ToList();
                     <table>
                         <thread>
                             <tr>
@@ -60,19 +60,18 @@
                         <tbody>
                             @foreach (var item in qr)
                             {
-
-                <tr>
-                    <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
-                    <td>@item.TENKH</td>
-                    <td class="content">@item.DAHUY</td>
-                    <td class="content">@item.DATHANHTOAN</td>
-                    <td class="content">@item.THANHTIEN</td>
-                    <td class="content">@item.NGAYLAPDON</td>
-                    <td class="content">
-                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
-                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
-                    </td>
-                </tr>}
+                                <tr>
+                                    <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
+                                    <td>@item.TENKH</td>
+                                    <td class="content">@item.DAHUY</td>
+                                    <td class="content">@item.DATHANHTOAN</td>
+                                    <td class="content">@item.THANHTIEN</td>
+                                    <td class="content">@item.NGAYLAPDON</td>
+                                    <td class="content">
+                                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
+                                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                                    </td>
+                                </tr>}
                         </tbody>
                     </table> }
                 <div class="pagination">
