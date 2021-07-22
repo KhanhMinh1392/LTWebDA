@@ -5,7 +5,24 @@
 @{ ViewBag.Title = "Donhang";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
 
+    .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
 <main>
     <h2 class="dash-title">Đơn Hàng</h2>
     <section class="recent">
@@ -14,21 +31,20 @@
                 <div class="right">
                     <a href="@Url.Action("CreateBill", "Adđ")"><button><i class="fas fa-plus-circle"></i> Tạo Đơn Hàng</button></a>
                 </div>
-                @{ 
-                    var db = new Web.Models.QLWebBanHangEntities1();
-                    var qr = (from hd in db.DonDatHangs
-                              join cthd in db.ChiTietDonDatHangs
-                              on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
-                              select new
-                              {
-                                  hd.DONDATHANG_ID,
-                                  hd.KhachHang.TENKH,
-                                  hd.DAHUY,
-                                  hd.DATHANHTOAN,
-                                  hd.NGAYLAPDON,
-                                  cthd.THANHTIEN
-                              }
-                            ).ToList();
+                @{ var db = new Web.Models.QLWebBanHangEntities1();
+                                var qr = (from hd in db.DonDatHangs
+                                          join cthd in db.ChiTietDonDatHangs
+                                          on hd.DONDATHANG_ID equals cthd.DONDATHANG_ID
+                                          select new
+                                          {
+                                              hd.DONDATHANG_ID,
+                                              hd.KhachHang.TENKH,
+                                              hd.DAHUY,
+                                              hd.DATHANHTOAN,
+                                              hd.NGAYLAPDON,
+                                              cthd.THANHTIEN
+                                          }
+                                        ).Distinct().ToList();
                     <table>
                         <thread>
                             <tr>
@@ -44,41 +60,54 @@
                         <tbody>
                             @foreach (var item in qr)
                             {
-                            <tr>
-                                <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
-                                <td>@item.TENKH</td>
-                                <td class="content">@item.DAHUY</td>
-                                <td class="content">@item.DATHANHTOAN</td>
-                                <td class="content">@item.THANHTIEN</td>
-                                <td class="content">@item.NGAYLAPDON</td>
-                                <td class="content"><i class="fas fa-trash-alt"></i></td>
-                            </tr>
-                            }   
+
+                <tr>
+                    <td class="content"><a href="#">@item.DONDATHANG_ID</a></td>
+                    <td>@item.TENKH</td>
+                    <td class="content">@item.DAHUY</td>
+                    <td class="content">@item.DATHANHTOAN</td>
+                    <td class="content">@item.THANHTIEN</td>
+                    <td class="content">@item.NGAYLAPDON</td>
+                    <td class="content">
+                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
+                        <a href="@Url.Action("","",new {id=item.DONDATHANG_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                    </td>
+                </tr>}
                         </tbody>
-                    </table>
-                    }
+                    </table> }
+                <div class="pagination">
+                    Trang @(Model.PageCount < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Sanpham", "Admin", new { page = page, @class = "pagenum" }))
+                </div>
             </div>
             <div class="summary">
                 <div class="summary-card">
                     <div class="summary-single">
-                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <span class="ti-id-badge" style="margin-left:8px;"><i class="fas fa-id-badge fa-2x"></i></span>
                         <div>
-                            <h5>196</h5>
-                            <small>Nhân Viên</small>
+                            <h5> @ViewBag.Tongnhanvien</h5>
+                            <small> Nhân Viên</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
                         <div>
-                            <h5>200</h5>
-                            <small>Sản Phẩm Bán Chạy</small>
+                            <h5>@ViewBag.Songuoitruycap</h5>
+                            <small>Số người truy cập</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge" style="margin-left:5px;"><i class="fas fa-user fa-2x"></i></span>
+                        <div>
+                            <h5>@ViewBag.Songuoidangonl</h5>
+                            <small>Số người đang online</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
                         <div>
-                            <h5>125</h5>
-                            <small>Sản Phẩm Mới</small>
+                            <h5>@ViewBag.Tongkhachhang</h5>
+                            <small>Khách hàng</small>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,22 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Application["SoNguoiTruyCap"] = 0;
+            Application["SoNguoiDangOnl"] = 0;
+        }
+        protected void Session_Start()
+        {
+            Application.Lock();
+            Application["SoNguoiTruyCap"] = (int)Application["SoNguoiTruyCap"] + 1;
+            Application["SoNguoiDangOnl"] = (int)Application["SoNguoiDangOnl"] + 1;
+            Application.UnLock();
+        }
+        protected void Session_End()
+        {
+            Application.Lock();
+            Application["SoNguoiDangOnl"] = (int)Application["SoNguoiDangOnl"] - 1;
+            Application.UnLock();
         }
     }
 }

@@ -5,6 +5,24 @@
     ViewBag.Title = "Sanpham";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+        .pagination a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+</style>
 <main>
     <h2 class="dash-title">Sản Phẩm</h2>
     <section class="recent">
@@ -27,18 +45,17 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td class="content"><img src="~/Content/img/it_service/@item.HINHANH" alt="" style="width:60px"></td>
-                                <td>@item.TENSP</td>
-                                <td class="content">@item.CategoryCon.TENLOAISP</td>
-                                <td class="content">@item.SL</td>
-                                <td class="content">@item.GIA</td>
-                                <td class="content">
-                                    <a href="@Url.Action("Edit","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
-                                    <a href="@Url.Action("Delete","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
-                                </td>
-                            </tr>
-                         }
+            <tr>
+                <td class="content"><img src="~/Content/img/it_service/@item.HINHANH" alt="" style="width:60px"></td>
+                <td>@item.TENSP</td>
+                <td class="content">@item.CategoryCon.TENLOAISP</td>
+                <td class="content">@item.SL</td>
+                <td class="content">@item.GIA</td>
+                <td class="content">
+                    <a href="@Url.Action("Edit","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-edit fa-1x" style="color: black"></i></a>
+                    <a href="@Url.Action("Delete","Add",new {id=item.PRODUCT_ID})"><i class="fas fa-trash-alt" style="color: black"></i></a>
+                </td>
+            </tr>}
                     </tbody>
                 </table>
                 <div class="pagination">
@@ -49,24 +66,31 @@
             <div class="summary">
                 <div class="summary-card">
                     <div class="summary-single">
-                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <span class="ti-id-badge" style="margin-left:8px;"><i class="fas fa-id-badge fa-2x"></i></span>
                         <div>
-                            <h5>196</h5>
-                            <small>Nhân Viên</small>
+                            <h5> @ViewBag.Tongnhanvien</h5>
+                            <small> Nhân Viên</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
                         <div>
-                            <h5>200</h5>
-                            <small>Sản Phẩm Bán Chạy</small>
+                            <h5>@ViewBag.Songuoitruycap</h5>
+                            <small>Số người truy cập</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge" style="margin-left:5px;"><i class="fas fa-user fa-2x"></i></span>
+                        <div>
+                            <h5>@ViewBag.Songuoidangonl</h5>
+                            <small>Số người đang online</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
                         <div>
-                            <h5>125</h5>
-                            <small>Sản Phẩm Mới</small>
+                            <h5>@ViewBag.Tongkhachhang</h5>
+                            <small>Khách hàng</small>
                         </div>
                     </div>
                 </div>

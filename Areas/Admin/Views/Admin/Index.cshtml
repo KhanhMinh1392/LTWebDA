@@ -11,11 +11,11 @@
                 <span><i class="fas fa-briefcase"></i></span>
                 <div>
                     <h5>Tổng Đơn Hàng</h5>
-                    <h4>30.000</h4>
+                    <h4>@ViewBag.Tongdonghang</h4>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View all</a>
+                <a href="@Url.Action("Donhang","Admin")">View all</a>
             </div>
         </div>
         <div class="card-single">
@@ -23,11 +23,11 @@
                 <span><i class="fas fa-sync-alt"></i></span>
                 <div>
                     <h5>Tổng Doanh Thu</h5>
-                    <h4>1.000.000.000VNĐ</h4>
+                    <h4>@ViewBag.TongDT.ToString("#,##") VNĐ</h4>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View all</a>
+                <a href="@Url.Action("","Admin")">View all</a>
             </div>
         </div>
         <div class="card-single">
@@ -35,11 +35,11 @@
                 <span><i class="fas fa-shopping-cart"></i></span>
                 <div>
                     <h5>Tổng Sản Phẩm</h5>
-                    <h4>75.300</h4>
+                    <h4>@ViewBag.Tongsanpham</h4>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="">View all</a>
+                <a href="@Url.Action("Sanpham","Admin")">View all</a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                 <div class="topic">
                     <h3>Đơn Hàng</h3>
                     <div class="right">
-                        <a href="donhang.html"><button><i class="fas fa-plus-circle"></i> Xem Thêm</button></a>
+                        <a href="@Url.Action("Donhang","Admin")"><button><i class="fas fa-plus-circle"></i> Xem Thêm</button></a>
                     </div>
                 </div>
                 <table>
@@ -112,24 +112,31 @@
             <div class="summary">
                 <div class="summary-card">
                     <div class="summary-single">
-                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <span class="ti-id-badge" style="margin-left:8px;"><i class="fas fa-id-badge fa-2x"></i></span>
                         <div>
-                            <h5>196</h5>
-                            <small>Nhân Viên</small>
+                            <h5> @ViewBag.Tongnhanvien</h5>
+                            <small> Nhân Viên</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
                         <div>
-                            <h5>200</h5>
-                            <small>Sản Phẩm Bán Chạy</small>
+                            <h5>@ViewBag.Songuoitruycap</h5>
+                            <small>Số người truy cập</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge" style="margin-left:5px;"><i class="fas fa-user fa-2x"></i></span>
+                        <div>
+                            <h5>@ViewBag.Songuoidangonl</h5>
+                            <small>Số người đang online</small>
                         </div>
                     </div>
                     <div class="summary-single">
                         <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
                         <div>
-                            <h5>125</h5>
-                            <small>Sản Phẩm Mới</small>
+                            <h5>@ViewBag.Tongkhachhang</h5>
+                            <small>Khách hàng</small>
                         </div>
                     </div>
                 </div>
