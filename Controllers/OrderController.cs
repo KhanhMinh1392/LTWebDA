@@ -21,7 +21,7 @@ namespace Web.Controllers
             }
             return lstGioHang;
         }
-        public ActionResult DatHang(KhachHang kh)
+        public ActionResult DatHang(KhachHang kh, string ghichu, string diachi)
         {
             if (Session["Cart"] == null)
             {
@@ -44,6 +44,8 @@ namespace Web.Controllers
             ddh.DATHANHTOAN = false;
             ddh.DAHUY = false;
             ddh.DAXOA = false;
+            ddh.GHICHU = ghichu;
+            ddh.DIACHI = diachi;
             db.DonDatHangs.Add(ddh);
             db.SaveChanges();
             List<Cart> lstGH = LayGioHang();

@@ -63,6 +63,8 @@
           <Property Name="DAXOA" Type="bit" Nullable="false" />
           <Property Name="NGAYLAPDON" Type="datetime" />
           <Property Name="NGAYGIAOHANG" Type="datetime" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="GioHang">
           <Key>
@@ -432,6 +434,8 @@
           <Property Name="DAXOA" Type="Boolean" Nullable="false" />
           <Property Name="NGAYLAPDON" Type="DateTime" Precision="3" />
           <Property Name="NGAYGIAOHANG" Type="DateTime" Precision="3" />
+          <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ChiTietDonDatHangs" Relationship="QLWebBanHangModel.FK__ChiTietDo__DONDA__571DF1D5" FromRole="DonDatHang" ToRole="ChiTietDonDatHang" />
           <NavigationProperty Name="KhachHang" Relationship="QLWebBanHangModel.FK__DonDatHan__KHACH__534D60F1" FromRole="DonDatHang" ToRole="KhachHang" />
         </EntityType>
@@ -703,6 +707,8 @@
           <EntitySetMapping Name="DonDatHangs">
             <EntityTypeMapping TypeName="QLWebBanHangModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="NGAYGIAOHANG" ColumnName="NGAYGIAOHANG" />
                 <ScalarProperty Name="NGAYLAPDON" ColumnName="NGAYLAPDON" />
                 <ScalarProperty Name="DAXOA" ColumnName="DAXOA" />

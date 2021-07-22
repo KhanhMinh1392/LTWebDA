@@ -41,6 +41,10 @@ public partial class DonDatHang
 
     public Nullable<System.DateTime> NGAYGIAOHANG { get; set; }
 
+    public string GHICHU { get; set; }
+
+    public string DIACHI { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
