@@ -18,11 +18,12 @@
         <div class="activity-grid">
             <div class="activity-card">
                 <h3>Thông Tin Khách Hàng</h3>
+                
                 <div class="detail">
                     @using (Html.BeginForm("Edit", "Add", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.Hidden("id", Model.DONDATHANG_ID)
+                        @Html.HiddenFor(m=>m.DONDATHANG_ID)
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <table>
                         <thread>
