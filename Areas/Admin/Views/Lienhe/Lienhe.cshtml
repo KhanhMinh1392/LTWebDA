@@ -1,0 +1,85 @@
+﻿@model Web.Models.SendMailKH
+@{
+    ViewBag.Title = "Lienhe";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .left, .right {
+        margin-bottom: 100px;
+    }
+
+    input {
+        margin-bottom: 10px;
+        width: 300px;
+        height:28px;
+    }
+    .cen textarea{
+        width: 800px;
+        height: 300px;
+        margin-top: 10px;
+    }
+</style>
+<main>
+    &lsaquo;<a href="@Url.Action("Lienhe","Lienhe")" class="dash-title underline">Quay về danh sách liên hệ</a>
+    <h2 class="dash-title">Liên hệ khách hàng</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    @using (Html.BeginForm("Lienhe", "Lienhe", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                        <div class="">
+                            Email <br>
+                            @Html.TextBoxFor(m => m.to, new { placeholder = "@gmail.com", type = "email" })
+                            <br>
+                        </div>
+                        <div class="">
+                            <br />
+                            Tiêu đề <br>
+                            @Html.TextBoxFor(m => m.subject, new { placeholder = "Tiêu đề" })
+                            <br>
+                        </div>
+                        <div class="cen">
+                            <br>
+                            Nội dung<br>
+                            @Html.TextAreaFor(m => m.body, new { type = "" })
+                            <br />
+                        </div>
+                        <div class="btn">
+                            <input type="submit" value="Gửi">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

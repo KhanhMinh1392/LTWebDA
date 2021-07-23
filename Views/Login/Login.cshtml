@@ -22,7 +22,9 @@
                    FormMethod.Post, new { @class = "sign-in-form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <img class="logo" src="~/Content/img/img_Login/logo.png" alt="">
+                    <a href="@Url.Action("Index","Home")">
+                        <img class="logo" src="~/Content/img/img_Login/logo.png" alt="">
+                    </a>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">

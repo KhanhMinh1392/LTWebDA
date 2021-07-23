@@ -3,10 +3,15 @@
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    input {
+        margin-bottom: 20px;
+    }
 
+</style>
 <main>
     &lsaquo; <a href="@Url.Action("Customer","Admin")" class="dash-title underline">Quay về danh sách khách hàng</a>
-    <h2 class="dash-title">Xóa Sản Phẩm</h2>
+    <h2 class="dash-title">Xóa Khách Hàng</h2>
     <section class="recent">
         <div class="activity-grid">
             <div class="activity-card">
@@ -28,7 +33,6 @@
                             @Html.TextBoxFor(model => model.EMAIL, new { @class = "mota" })
                         </div>
                         <div class="right">
-                            <br>
                             <br>
                             USERNAME <br>
                             @Html.TextBoxFor(model => model.USERNAME, new { @class = "" })

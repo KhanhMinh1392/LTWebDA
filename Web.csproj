@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AddController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LienheController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
@@ -207,6 +208,8 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sanpham.cs" />
+    <Compile Include="Models\SendMailDonHang.cs" />
+    <Compile Include="Models\SendMailKH.cs" />
     <Compile Include="Models\Size.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -3808,6 +3811,7 @@
     <Content Include="Areas\Admin\Views\Staff\Createstaff.cshtml" />
     <Content Include="Areas\Admin\Views\Staff\EditStaff.cshtml" />
     <Content Include="Areas\Admin\Views\Staff\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Lienhe\Lienhe.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3856,7 +3860,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Model\" />
     <Folder Include="Areas\Admin\Views\User\" />
   </ItemGroup>
   <ItemGroup>

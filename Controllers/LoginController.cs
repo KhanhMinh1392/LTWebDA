@@ -11,10 +11,9 @@ namespace Web.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+      
         public QLWebBanHangEntities1 db = new QLWebBanHangEntities1();
         // GET: Login
-        //[HttpGet]
         public ActionResult Login()
         {
             return View();
