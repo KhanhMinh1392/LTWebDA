@@ -89,7 +89,7 @@ namespace Web.Areas.Admin.Controllers
             }
             return View(model);
         }
-            public ActionResult Delete(int id)
+         public ActionResult Delete(int id)
         {
             Product pr = db.Products.SingleOrDefault(n => n.PRODUCT_ID == id);
             if(pr == null)
@@ -114,48 +114,6 @@ namespace Web.Areas.Admin.Controllers
             db.Products.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Sanpham", "Admin");
-        }
-        public ActionResult Createstaff()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Createstaff(NhanVien nv)
-        {
-            if (ModelState.IsValid)
-            {
-                var check = db.NhanViens.FirstOrDefault(s => s.ADUSERNAME == nv.ADUSERNAME);
-                if (check == null)
-                {
-                    nv.ADPASSWORD = GetMD5(nv.ADPASSWORD);
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                    db.NhanViens.Add(nv);
-                    db.SaveChanges();
-                    return RedirectToAction("Staff", "Admin");
-                }
-                else
-                {
-                    ViewBag.error = "Staff already exists";
-                    return View();
-                }
-            }
-            return View();
-        }
-        //detele
-        
-  
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-            }
-            return byte2String;
         }
     }
 }

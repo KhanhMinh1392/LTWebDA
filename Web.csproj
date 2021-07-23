@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Controllers\AnnounceController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3559,7 +3560,7 @@
     <Content Include="Content\img\img_Login\log.svg" />
     <Content Include="Content\img\img_Login\logo.png" />
     <Content Include="Content\img\img_Login\register.svg" />
-    <Content Include="Content\img\img_news\post-04.png" />
+    <Content Include="Content\img\img_news\182131403_1425441547821704_6506745631682281546_n.jpg" />
     <Content Include="Content\img\img_news\post-cardigan.jpg" />
     <Content Include="Content\img\it_service\1tshirt.jpg" />
     <Content Include="Content\img\it_service\404_error_img.png" />
@@ -3790,7 +3791,6 @@
     <Content Include="Areas\Admin\Views\AddCustomer\NewCus.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAdmin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Staff.cshtml" />
-    <Content Include="Areas\Admin\Views\Add\Createstaff.cshtml" />
     <Content Include="Areas\Admin\Views\New\News.cshtml" />
     <Content Include="Areas\Admin\Views\New\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\New\Create.cshtml" />
@@ -3804,6 +3804,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\DonHang\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Createstaff.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\EditStaff.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3852,6 +3855,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Model\" />
     <Folder Include="Areas\Admin\Views\User\" />
   </ItemGroup>
   <ItemGroup>

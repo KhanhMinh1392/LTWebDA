@@ -5,11 +5,12 @@
 }
 
 <main>
-    &lsaquo; <a href="@Url.Action("Customer","Admin")" class="dash-title underline">Quay về danh sách sản phẩm</a>
+    &lsaquo; <a href="@Url.Action("Customer","Admin")" class="dash-title underline">Quay về danh sách khách hàng</a>
     <h2 class="dash-title">Xóa Sản Phẩm</h2>
     <section class="recent">
         <div class="activity-grid">
             <div class="activity-card">
+                <h3>Thông tin khách hàng</h3>
                 <div class="detail">
                     @using (Html.BeginForm("Delete", "AddCustomer", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                     {

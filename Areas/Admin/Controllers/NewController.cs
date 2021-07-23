@@ -80,22 +80,17 @@ namespace Web.Areas.Admin.Controllers
             return View(pr);
         }
         [HttpPost]
-        public ActionResult Edit(News model, HttpPostedFileBase hinhanh)
+        public ActionResult Edit(News model, HttpPostedFileBase HINHANH)
         {
-            ViewBag.SP = new SelectList(db.News,model.NEWS_ID);
+            ViewBag.SP = new SelectList(db.News, model.NEWS_ID);
             db.Entry(model).State = System.Data.Entity.EntityState.Modified;
-            if (hinhanh.ContentLength > 0)
+            if (HINHANH.ContentLength > 0)
             {
-                var fileName = Path.GetFileName(hinhanh.FileName);
+                var fileName = Path.GetFileName(HINHANH.FileName);
                 var path = Path.Combine(Server.MapPath("~/Content/img/it_service"), fileName);
                 if (System.IO.File.Exists(path))
                 {
-                    ViewBag.upload = "Hình ảnh đã tồn tại";
-                    return View();
-                }
-                else
-                {
-                    hinhanh.SaveAs(path);
+                    HINHANH.SaveAs(path);
                     model.HINHANH = fileName;
                 }
                 db.SaveChanges();
@@ -103,6 +98,17 @@ namespace Web.Areas.Admin.Controllers
             }
             return View(model);
         }
+        //[HttpPost]
+        //public ActionResult Edit(News model,int id)
+        //{
+        //    News x = db.News.First(m => m.NEWS_ID.CompareTo(id) == 0);
+        //    x.TIEUDE = model.TIEUDE;
+        //    x.HINHANH = model.HINHANH;
+        //    x.CHITIET = model.CHITIET;
+        //    x.NGAYDANG = model.NGAYDANG;
+        //    db.SaveChanges();
+        //    return View(model);
+        //}
         public ActionResult Delete(int id)
         {
             News pr = db.News.SingleOrDefault(n => n.NEWS_ID == id);

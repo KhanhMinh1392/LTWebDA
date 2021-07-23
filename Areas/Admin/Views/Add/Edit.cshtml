@@ -32,28 +32,11 @@
                         </div>
                         <div class="right">
                             <br>
-                            @Html.LabelFor(model => model.Size)
-                            @{ 
-                                Web.Models.QLWebBanHangEntities1 db = new Web.Models.QLWebBanHangEntities1();
-                                var sz = db.Sizes.ToList();
-                                <select name="SIZE_ID">
-                                    @foreach(var item in sz)
-                                    {
-                                        <option value="@item.SIZE_ID">@item.TENSIZE</option>
-                                    }
-                                </select>
-                            }
+                            @Html.LabelFor(model => model.Size) <br />
+                            @Html.TextBoxFor(model => model.Size.TENSIZE, new { @class = "" })
                             <br>
                             Loại Sản Phẩm <br />
-                            @{ 
-                                var lsp = db.CategoryCons.ToList();
-                                <select name="CATEGORYCON_ID">
-                                    @foreach(var item in lsp)
-                                    {
-                                        <option value="@item.CATEGORYCON_ID">@item.TENLOAISP</option>
-                                    }
-                                </select>
-                            }
+                            @Html.TextBoxFor(model => model.CategoryCon.TENLOAISP, new { @class = "" })
                             <br>
                             Giá<br>
                             @Html.TextBoxFor(model => model.GIA, new { @class = "" })
@@ -63,11 +46,11 @@
                                 <img src="@Url.Content("~/Content/img/it_service/"+Model.HINHANH)" class="avatar img-circle img-thumbnail" alt="avatar" style="width:300px">
                                 <h6>Upload PicTure</h6>
                                 <input type="file" class="text-center center-block file-upload" name="HINHANH">
-                                <span style="color:red">@ViewBag.upload</span>
+                                @*//<span style="color:red">@ViewBag.upload</span>*@
                             </div><br>
                         </div>
                         <div class="btn">
-                            <input type="submit" value="EDIT">
+                            <input type="submit" value="Lưu">
                         </div>}
                 </div>
             </div>

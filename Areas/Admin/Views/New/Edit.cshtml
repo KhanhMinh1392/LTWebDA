@@ -19,7 +19,7 @@
                     @using (Html.BeginForm("Edit", "New", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.Hidden("NEWS_ID", Model.NEWS_ID)
+                        @Html.HiddenFor(m=>m.NEWS_ID)
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="left">
                             Tiêu đề<br>

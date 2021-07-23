@@ -22,12 +22,12 @@
 </style>
 
 <main>
-    <h2>Staff</h2>
+    <h2>Nhân Viên</h2>
     <section class="recent">
         <div class="activity-grid">
             <div class="activity-card">
                 <div class="right">
-                    <a href="@Url.Action("Createstaff","Add")"><button><i class="fas fa-plus-circle"></i> Tạo Nhân Viên</button></a>
+                    <a href="@Url.Action("Createstaff","Staff")"><button><i class="fas fa-plus-circle"></i> Tạo Nhân Viên</button></a>
                 </div>
                 <table>
                     <thread>
@@ -50,7 +50,10 @@
                                     <td class="content">@item.EMAIL</td>
                                     <td class="content">@item.SDT</td>
                                     <td class="content">@item.ADUSERNAME</td>
-                                    <td class="content"><a href="@Url.Action("Delete", "Staff" )"><i class="fas fa-trash-alt"></i></a></td>
+                                    <td class="content">
+                                        <a href="@Url.Action("EditStaff", "Staff",new {id=item.NHANVIEN_ID} )"><i class="fas fa-edit"></i></a>
+                                        <a href="@Url.Action("Delete", "Staff",new {id=item.NHANVIEN_ID} )"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
                                 </a>
                             </tr>}
                     </tbody>
