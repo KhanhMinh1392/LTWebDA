@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
@@ -21,12 +23,8 @@ namespace Web.Controllers
             }
             return lstGioHang;
         }
-        public ActionResult DatHang(KhachHang kh, string ghichu, string diachi)
+        public ActionResult DatHang(KhachHang kh, string ghichu, string diachi,SendMailDonHang send)
         {
-            if (Session["Cart"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             KhachHang khachang = new KhachHang();
             if (Session["username"] == null)
             {
@@ -49,6 +47,7 @@ namespace Web.Controllers
             db.DonDatHangs.Add(ddh);
             db.SaveChanges();
             List<Cart> lstGH = LayGioHang();
+          
             foreach (var item in lstGH)
             {
                 ChiTietDonDatHang cthd = new ChiTietDonDatHang();
@@ -58,10 +57,38 @@ namespace Web.Controllers
                 cthd.SOLUONG = item.sl;
                 cthd.GIA = (double)item.GIA;
                 cthd.THANHTIEN = int.Parse(item.ThanhTien.ToString());
+                ///////////////////////////////////////////////////
+                send.tensp = cthd.TENSP;
+                send.sl = item.sl;
+                send.total = int.Parse(item.ThanhTien.ToString());
                 db.ChiTietDonDatHangs.Add(cthd);
+            
             }
             db.SaveChanges();
             Session["Cart"] = null;
+            //////////////////////Gửi Email Đơn Hàng//////////////////////////////////////
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Admin/Mail/Mailsend.html"));
+            content = content.Replace("{{KHACHHANG}}", kh.TENKH);
+            content = content.Replace("{{SDT}}", kh.SDT.ToString());
+            content = content.Replace("{{TENSP}}", send.tensp);
+            content = content.Replace("{{SOLUONG}}", send.sl.ToString());
+            content = content.Replace("{{ThanhTien}}", send.total.ToString("#,##"));
+
+
+            send.to = kh.EMAIL;
+            MailMessage mail = new MailMessage(System.Configuration.ConfigurationManager.AppSettings["Email"].ToString(), send.to);
+            mail.Subject = "Mua hàng LEO thành Công";
+            mail.Body = content;
+            mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Timeout = 1000000;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            NetworkCredential nc = new NetworkCredential(System.Configuration.ConfigurationManager.AppSettings["Email"].ToString(), System.Configuration.ConfigurationManager.AppSettings["Password"].ToString());
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = nc;
+            smtp.Send(mail);
             return RedirectToAction("Success","Announce");
         }
     }

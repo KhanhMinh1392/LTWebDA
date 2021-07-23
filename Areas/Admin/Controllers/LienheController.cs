@@ -18,7 +18,7 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult Lienhe(SendMailKH mail)
         {
             mail.SendMail();
-            return View();
+            return RedirectToAction("Lienhe");
         }
     }
 }
