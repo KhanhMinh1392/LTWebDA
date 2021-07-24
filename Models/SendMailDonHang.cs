@@ -14,6 +14,7 @@ namespace Web.Models
         public string body { get; set; }
         public string tensp { get; set; }
         public int sl { get; set; }
+        public string size { get; set; }
         public decimal total { get; set; }
     }
 }

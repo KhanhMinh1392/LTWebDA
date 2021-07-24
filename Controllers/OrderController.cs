@@ -59,6 +59,7 @@ namespace Web.Controllers
                 cthd.THANHTIEN = int.Parse(item.ThanhTien.ToString());
                 ///////////////////////////////////////////////////
                 send.tensp = cthd.TENSP;
+                send.size = item.Size;
                 send.sl = item.sl;
                 send.total = int.Parse(item.ThanhTien.ToString());
                 db.ChiTietDonDatHangs.Add(cthd);
@@ -71,6 +72,7 @@ namespace Web.Controllers
             content = content.Replace("{{KHACHHANG}}", kh.TENKH);
             content = content.Replace("{{SDT}}", kh.SDT.ToString());
             content = content.Replace("{{TENSP}}", send.tensp);
+            content = content.Replace("{{SIZE}}", send.size);
             content = content.Replace("{{SOLUONG}}", send.sl.ToString());
             content = content.Replace("{{ThanhTien}}", send.total.ToString("#,##"));
 
