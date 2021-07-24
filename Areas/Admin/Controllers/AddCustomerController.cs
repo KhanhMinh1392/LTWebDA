@@ -40,6 +40,34 @@ namespace Web.Areas.Admin.Controllers
             }
             return View();
         }
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            KhachHang pr = db.KhachHangs.SingleOrDefault(n => n.KHACHHANG_ID == id);
+            if (pr == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pr);
+        }
+        [HttpPost]
+        public ActionResult Edit(KhachHang model, int id)
+        {
+            KhachHang x = db.KhachHangs.First(m => m.KHACHHANG_ID.CompareTo(id) == 0);
+            x.TENKH = model.TENKH;
+            x.SDT = model.SDT;
+            x.EMAIL = model.EMAIL;
+            x.DIACHI = model.DIACHI;
+            x.USERNAME = model.USERNAME;
+            x.UPASSWORD = GetMD5(model.UPASSWORD.ToString());
+            db.SaveChanges();
+
+            return RedirectToAction("Customer", "Admin");
+        }
         public ActionResult Delete(int id)
         {
             KhachHang pr = db.KhachHangs.SingleOrDefault(n => n.KHACHHANG_ID == id);

@@ -56,7 +56,7 @@ namespace Web.Areas.Admin.Controllers
             return View(pr);
         }
         [HttpPost]
-        public ActionResult Edit(NhanVien model, int id)
+        public ActionResult EditStaff(NhanVien model, int id)
         {
             NhanVien x = db.NhanViens.First(m => m.NHANVIEN_ID.CompareTo(id) == 0);
             x.TENNV = model.TENNV;
@@ -65,9 +65,10 @@ namespace Web.Areas.Admin.Controllers
             x.DIACHI = model.DIACHI;
             x.NGAYSINH = model.NGAYSINH;
             x.ADUSERNAME = model.ADUSERNAME;
-            x.ADPASSWORD = GetMD5(model.ADPASSWORD);
+            x.ADPASSWORD = GetMD5(model.ADPASSWORD.ToString());
             db.SaveChanges();
-            return View(model);
+
+            return RedirectToAction("Staff", "Admin",model);
         }
         //detele
         public ActionResult Delete(int id)

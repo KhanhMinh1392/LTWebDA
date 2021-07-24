@@ -1,0 +1,84 @@
+﻿@model Web.Models.KhachHang
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .left, .right {
+        margin-bottom: 100px;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+</style>
+<main>
+    &lsaquo;<a href="@Url.Action("Customer","Admin")" class="dash-title underline">Quay về danh sách nhân viên</a>
+    <h2 class="dash-title">Thông tin nhân viên</h2>
+    <section class="recent">
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="detail">
+                    @using (Html.BeginForm("Edit", "AddCustomer", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.KHACHHANG_ID)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+                        <div class="left">
+                            Tên Khách Hàng <br>
+                            @Html.TextBoxFor(m => m.TENKH)
+                            <br>
+                            Số Điện Thoại <br>
+                            @Html.TextBoxFor(m => m.SDT, new { type = "tel" })
+                            <br>
+                            Email<br>
+                            @Html.TextBoxFor(m => m.EMAIL, new { type = "email" })
+                            <br />
+                            Địa Chỉ<br>
+                            @Html.TextAreaFor(m => m.DIACHI, new { type = "text", @class = "input" })
+                            <br />
+                        </div>
+                        <div class="right">
+                            <br>
+                            USERNAME <br>
+                            @Html.TextBoxFor(m => m.USERNAME, new { @class = "" })
+                            <br>
+                            PASSWORD <br>
+                            @Html.PasswordFor(m => m.UPASSWORD, new { @class = "", type = "password" })
+                            <br>
+                        </div>
+                        <div class="btn">
+                            <input type="submit" value="Lưu">
+                        </div>}
+                </div>
+            </div>
+            <div class="summary">
+                <div class="summary-card">
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-id-badge fa-2x"></i></span>
+                        <div>
+                            <h5>196</h5>
+                            <small>Nhân Viên</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fas fa-smile fa-2x"></i></span>
+                        <div>
+                            <h5>200</h5>
+                            <small>Sản Phẩm Bán Chạy</small>
+                        </div>
+                    </div>
+                    <div class="summary-single">
+                        <span class="ti-id-badge"><i class="fab fa-product-hunt fa-2x"></i></span>
+                        <div>
+                            <h5>125</h5>
+                            <small>Sản Phẩm Mới</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
