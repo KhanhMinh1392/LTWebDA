@@ -54,6 +54,9 @@
                                     <td class="content">@item.SDT</td>
                                     <td class="content">@item.USERNAME</td>
                                     <td class="content">
+                                        <a href="@Url.Action("Edit","AddCustomer",new {id=item.KHACHHANG_ID})">
+                                            <i class="fas fa-edit" style="color: black"></i>
+                                        </a>
                                         <a href="@Url.Action("Delete","AddCustomer",new {id=item.KHACHHANG_ID})">
                                             <i class="fas fa-trash-alt" style="color: black"></i>
                                         </a>
