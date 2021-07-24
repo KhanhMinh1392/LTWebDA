@@ -79,7 +79,7 @@ namespace Web.Controllers
 
             send.to = kh.EMAIL;
             MailMessage mail = new MailMessage(System.Configuration.ConfigurationManager.AppSettings["Email"].ToString(), send.to);
-            mail.Subject = "Mua hàng LEO thành Công";
+            mail.Subject = "Mua hàng thành Công";
             mail.Body = content;
             mail.IsBodyHtml = true;
 
