@@ -11,7 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login LEO</title>
     @Styles.Render("/Content/css/login.css")
+    <link rel="icon" href="~/Content/img/logos/logotitlewhite.png" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+    <style>
+        .font {
+            font-family: Tahoma;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,15 +30,15 @@
                     @Html.AntiForgeryToken()
                     <img class="logo" src="~/Content/img/img_Login/logo.png" alt="">
                      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <h2 class="title">Sign up</h2>
+                    <h2 class="title" >Đăng ký</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        @Html.TextBoxFor(model => model.USERNAME, new { placeholder = "Username" })
+                        @Html.TextBoxFor(model => model.USERNAME, new { placeholder = "Tên đăng nhập" })
                         <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.USERNAME)</p>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        @Html.TextBoxFor(model => model.TENKH, new { placeholder = "Tên Khách Hàng" })
+                        @Html.TextBoxFor(model => model.TENKH, new { placeholder = "Tên khách hàng" })
                         <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.TENKH)</p>
                     </div>
                     <div class="input-field">
@@ -47,11 +53,11 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        @Html.PasswordFor(model => model.UPASSWORD, new { placeholder = "Password" })
+                        @Html.PasswordFor(model => model.UPASSWORD, new { placeholder = "Mật khẩu" })
                         <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.UPASSWORD)</p>
                     </div>
-                    <input type="submit" class="btn" value="Sign up" />
-                    <p class="social-text">Or Sign up with social platforms</p>
+                    <input type="submit" class="btn" value="ĐĂNG KÝ" />
+                    <p class="social-text">Đăng nhập bằng các nền tảng xã hội</p>
                     <div class="social-media">
                         <a href="https://www.facebook.com/" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -73,13 +79,13 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Sigin in</h3>
+                    <h3>Đăng nhập</h3>
                     <p>
                         Nếu bạn đăng kí thành công thì có thể quay về trang đăng nhập để vào WEBSITE LEO SHOP
                     </p>
                     <a href="@Url.Action("Login","Login")">
                         <button class="btn transparent" id="sign-in-btn">
-                            Sign in
+                            ĐĂNG NHẬP
                         </button>
                     </a>
                 </div>

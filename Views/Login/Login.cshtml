@@ -9,9 +9,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login LEO</title>
+    <title>Đăng Nhập LEO</title>
     @Styles.Render("/Content/css/login.css")
+    <link rel="icon" href="~/Content/img/logos/logotitlewhite.png" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
+    <style>
+        .font{
+            font-family: Tahoma;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -26,19 +32,19 @@
                         <img class="logo" src="~/Content/img/img_Login/logo.png" alt="">
                     </a>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <h2 class="title">Sign in</h2>
+                    <h2 class="title" style="font-family:Tahoma">Đăng nhập</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        @Html.TextBoxFor(model => model.USERNAME, "", new { placeholder = "Username" })
+                        @Html.TextBoxFor(model => model.USERNAME, "", new { placeholder = "Tên đăng nhập",@class = "font" })
                         <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.USERNAME, "", new{ @class= "text-danger" })</p>   
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        @Html.PasswordFor(model => model.UPASSWORD, new { placeholder = "Password" })
+                        @Html.PasswordFor(model => model.UPASSWORD, new { placeholder = "Mật khẩu", @class = "font" })
                         <p style="color:red;width:300px;">@Html.ValidationMessageFor(model => model.UPASSWORD, "", new { placeholder = "Username" })</p>
                     </div>
-                    <input type="submit" value="Login" class="btn solid"/>
-                    <p class="social-text">Or Sign in with social platforms</p>
+                    <input type="submit" value="Đăng Nhập" class="btn solid"/>
+                    <p class="social-text">Đăng nhập bằng các nền tảng xã hội</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -60,14 +66,14 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Create Account</h3>
+                    <h3 class = "font" >Tạo tài khoản</h3>
                     <p>
                         Website LEO SHOP
                         Tạo tài khoản nếu chưa có để vào mua sắm
                     </p>
                     <a href="@Url.Action("Resigter","Login")" style="text-decoration: none">
                         <button class="btn transparent" id="sign-up-btn">
-                            Sign up
+                            Đăng Ký
                         </button>
                     </a>
                 </div>

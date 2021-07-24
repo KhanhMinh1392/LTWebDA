@@ -12,10 +12,10 @@
                 <div class="full">
                     <div class="title-holder">
                         <div class="title-holder-cell text-left">
-                            <h1 class="page-title">Shop Detail</h1>
+                            <h1 class="page-title" style="font-family: 'Times New Roman'">Chi Tiết Sản Phẩm</h1>
                             <ol class="breadcrumb">
                                 <li><a href="index.html">Home</a></li>
-                                <li class="active">Shop Detail</li>
+                                <li class="active">Chi Tiết</li>
                             </ol>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                     <input step="1" min="1" max="5" name="sl" value="1" title="Qty" class="input-text qty text" size="4" type="number">
                                 </div>
                                 <a href="@Url.Action("ThemGioHang","Cart",new { @id=Model.dbsanpham.PRODUCT_ID,@strURL= Request.Url.ToString()})" class="btn sqaure_bt" style="margin-top:-3px; margin-left:10px;">
-                                    Add to cart
+                                    THÊM VÀO GIỎ
                                 </a>
                             </form>
                         </div>
@@ -157,7 +157,9 @@
                     <div class="col-md-12">
                         <div class="full">
                             <div class="main_heading text_align_left" style="margin-bottom: 35px;">
-                                <h3>Related products</h3>
+                                <h3 style="font-family:'Times New Roman'">
+                                    Sản phẩm liên quan
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -187,7 +189,7 @@
             <div class="col-md-3">
                 <div class="side_bar">
                     <div class="side_bar_blog">
-                        <h4>SEARCH</h4>
+                        <h4>Tìm Kiếm</h4>
                         <div class="side_bar_search">
                             <div class="input-group stylish-input-group">
                                 <input class="form-control" placeholder="Search" type="text">
