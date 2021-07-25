@@ -34,7 +34,7 @@ namespace Web.Controllers
             }
             else
             {
-                return RedirectToAction("XemGioHang");
+                return RedirectToAction("Cart","Cart");
             }
             DonDatHang ddh = new DonDatHang();
             ddh.NGAYLAPDON = DateTime.Now;
